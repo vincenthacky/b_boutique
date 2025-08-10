@@ -1,0 +1,4 @@
+/* App.css minimal - juste pour #root si nécessaire */
+#root {
+  min-height: 100vh;
+}

@@ -1,0 +1,403 @@
+
+
+/* Import des polices Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Variables CSS pour les thèmes */
+:root {
+  /* Couleurs principales - Be Boutique */
+  --color-primary-50: 255 251 235;  /* Très clair ambre */
+  --color-primary-100: 254 243 199; /* Clair ambre */
+  --color-primary-200: 253 230 138; /* Ambre léger */
+  --color-primary-300: 252 211 77;  /* Ambre */
+  --color-primary-400: 251 191 36;  /* Ambre moyen */
+  --color-primary-500: 245 158 11;  /* Ambre principal */
+  --color-primary-600: 217 119 6;   /* Ambre foncé */
+  --color-primary-700: 180 83 9;    /* Ambre très foncé */
+  --color-primary-800: 146 64 14;   /* Orange foncé */
+  --color-primary-900: 120 53 15;   /* Orange très foncé */
+
+  /* Couleurs secondaires - Orange */
+  --color-secondary-50: 255 247 237;
+  --color-secondary-100: 255 237 213;
+  --color-secondary-200: 254 215 170;
+  --color-secondary-300: 253 186 116;
+  --color-secondary-400: 251 146 60;
+  --color-secondary-500: 249 115 22;  /* Orange principal */
+  --color-secondary-600: 234 88 12;
+  --color-secondary-700: 194 65 12;
+  --color-secondary-800: 154 52 18;
+  --color-secondary-900: 124 45 18;
+
+  /* Couleurs système - Thème clair */
+  --color-background: 255 255 255;
+  --color-foreground: 15 23 42;
+  --color-card: 255 255 255;
+  --color-card-foreground: 15 23 42;
+  --color-muted: 248 250 252;
+  --color-muted-foreground: 100 116 139;
+  --color-border: 226 232 240;
+  --color-input: 226 232 240;
+  --color-ring: 245 158 11;
+
+  /* Couleurs d'état */
+  --color-success: 34 197 94;
+  --color-warning: 245 158 11;
+  --color-error: 239 68 68;
+  --color-info: 59 130 246;
+
+  /* Ombres personnalisées */
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-large: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, rgb(245 158 11) 0%, rgb(249 115 22) 100%);
+  --gradient-secondary: linear-gradient(135deg, rgb(249 115 22) 0%, rgb(234 88 12) 100%);
+  --gradient-hero: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+/* Thème sombre */
+[data-theme="dark"] {
+  --color-background: 15 23 42;
+  --color-foreground: 248 250 252;
+  --color-card: 30 41 59;
+  --color-card-foreground: 248 250 252;
+  --color-muted: 30 41 59;
+  --color-muted-foreground: 148 163 184;
+  --color-border: 51 65 85;
+  --color-input: 51 65 85;
+}
+
+/* Thème coloré */
+[data-theme="colorful"] {
+  --color-primary-500: 236 72 153;  /* Rose vif */
+  --color-secondary-500: 147 51 234; /* Violet */
+  --gradient-primary: linear-gradient(135deg, rgb(236 72 153) 0%, rgb(147 51 234) 100%);
+}
+
+/* Styles de base */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--color-muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-primary-400));
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-primary-500));
+}
+
+/* Sélection de texte */
+::selection {
+  background-color: rgba(var(--color-primary-200), 0.3);
+  color: rgb(var(--color-primary-900));
+}
+
+/* Animations personnalisées */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(var(--color-primary-400), 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(var(--color-primary-400), 0.8);
+  }
+}
+
+/* Classes utilitaires */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.4s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Effet shimmer pour les skeletons */
+.shimmer {
+  background: linear-gradient(90deg, 
+    rgb(var(--color-muted)) 25%, 
+    rgb(var(--color-card)) 50%, 
+    rgb(var(--color-muted)) 75%
+  );
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300;
+}
+
+.btn-secondary {
+  @apply border-2 border-amber-500 text-amber-600 font-semibold px-6 py-3 rounded-xl hover:bg-amber-500 hover:text-white transition-all duration-300;
+}
+
+.btn-ghost {
+  @apply text-gray-600 hover:text-amber-600 hover:bg-amber-50 px-4 py-2 rounded-lg transition-all duration-300;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100;
+}
+
+.card-dark {
+  @apply bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-700;
+}
+
+/* Input styles */
+.input {
+  @apply w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300;
+}
+
+.input-dark {
+  @apply w-full px-4 py-3 border border-gray-600 bg-gray-700 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent;
+}
+
+/* Layout helpers */
+.container-custom {
+  @apply container mx-auto px-6 lg:px-12;
+}
+
+.section-padding {
+  @apply py-16 lg:py-24;
+}
+
+/* Text styles */
+.heading-1 {
+  @apply text-4xl lg:text-6xl font-bold leading-tight;
+  font-family: 'Playfair Display', serif;
+}
+
+.heading-2 {
+  @apply text-3xl lg:text-5xl font-bold leading-tight;
+  font-family: 'Playfair Display', serif;
+}
+
+.heading-3 {
+  @apply text-2xl lg:text-3xl font-bold leading-tight;
+}
+
+.body-large {
+  @apply text-lg lg:text-xl leading-relaxed;
+}
+
+.body-small {
+  @apply text-sm leading-relaxed;
+}
+
+/* Responsive helpers */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Focus states */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-white;
+}
+
+.focus-ring-dark {
+  @apply focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-gray-800;
+}
+
+/* Loading states */
+.loading-dots::after {
+  content: '';
+  animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+  0%, 20% { content: ''; }
+  40% { content: '.'; }
+  60% { content: '..'; }
+  80%, 100% { content: '...'; }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: 0 0 0;
+    --color-muted: 128 128 128;
+  }
+}
+
+/* Custom utilities pour Be Boutique */
+.text-be-primary {
+  color: rgb(var(--color-primary-500));
+}
+
+.bg-be-primary {
+  background-color: rgb(var(--color-primary-500));
+}
+
+.bg-be-gradient {
+  background: var(--gradient-primary);
+}
+
+.border-be-primary {
+  border-color: rgb(var(--color-primary-500));
+}
+
+.shadow-be {
+  box-shadow: var(--shadow-medium);
+}
+
+.shadow-be-lg {
+  box-shadow: var(--shadow-large);
+}
+
+/* Animations spécifiques Be Boutique */
+.be-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.be-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
