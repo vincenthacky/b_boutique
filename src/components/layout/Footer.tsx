@@ -2,15 +2,20 @@
 import { memo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { 
-  Instagram, 
-  Facebook, 
-  MessageCircle, 
   Mail,
   MapPin,
   Phone,
   Send,
   Heart
 } from 'lucide-react'
+
+// Import du logo et des icônes sociales
+import Logo from '@/assets/Logo_orange.png'
+import FacebookIcon from '@/assets/Facebook.png'
+import InstagramIcon from '@/assets/Instagram.png'
+import LinkedInIcon from '@/assets/LinkedIn.png'
+import TikTokIcon from '@/assets/TikTok.png'
+//import WhatsAppIcon from '@/assets/WhatsApp.png'
 
 const Footer = memo(() => {
   const [email, setEmail] = useState('')
@@ -26,9 +31,11 @@ const Footer = memo(() => {
   }
 
   const socialLinks = [
-    { icon: Instagram, href: '#', label: 'Instagram', color: 'hover:text-pink-500' },
-    { icon: Facebook, href: '#', label: 'Facebook', color: 'hover:text-blue-500' },
-    { icon: MessageCircle, href: '#', label: 'WhatsApp', color: 'hover:text-green-500' },
+    { icon: FacebookIcon, href: '#', label: 'Facebook' },
+    { icon: InstagramIcon, href: '#', label: 'Instagram' },
+    { icon: LinkedInIcon, href: '#', label: 'LinkedIn' },
+    { icon: TikTokIcon, href: '#', label: 'TikTok' },
+    //{ icon: WhatsAppIcon, href: '#', label: 'WhatsApp' },
   ]
 
   const services = [
@@ -49,11 +56,11 @@ const Footer = memo(() => {
 
   return (
     <footer className="relative mt-20">
-      {/* Glassmorphic Background */}
+      {/* Fond */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-gray-100/80 backdrop-blur-sm"></div>
       
       <div className="relative">
-        {/* Newsletter Section */}
+        {/* Newsletter */}
         <div className="bg-gradient-to-r from-amber-500/10 to-amber-400/10 backdrop-blur-xl border-y border-white/20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <motion.div
@@ -105,10 +112,11 @@ const Footer = memo(() => {
           </div>
         </div>
 
-        {/* Main Footer Content */}
+        {/* Contenu principal */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Brand Column */}
+            
+            {/* Colonne marque */}
             <motion.div
               className="space-y-6"
               initial={{ opacity: 0, y: 20 }}
@@ -116,11 +124,14 @@ const Footer = memo(() => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div>
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-amber-600 to-amber-400 bg-clip-text text-transparent mb-2">
-                  Be Boutique
-                </h2>
-                <p className="text-amber-600 font-medium">Côte d'Ivoire</p>
+              <div className="flex items-center space-x-3">
+                <img src={Logo} alt="Be Boutique" className="w-auto h-40 object-contain" />
+                <div>
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-amber-600 to-amber-400 bg-clip-text text-transparent mb-1">
+                    Be Boutique
+                  </h2>
+                  <p className="text-amber-600 font-medium">Côte d'Ivoire</p>
+                </div>
               </div>
               
               <p className="text-gray-600 leading-relaxed">
@@ -128,24 +139,24 @@ const Footer = memo(() => {
                 Découvrez l'excellence du savoir-faire africain.
               </p>
 
-              {/* Social Links */}
+              {/* Réseaux sociaux */}
               <div className="flex space-x-4">
                 {socialLinks.map((social) => (
                   <motion.a
                     key={social.label}
                     href={social.href}
-                    className={`p-3 bg-white/50 backdrop-blur-sm rounded-xl text-gray-600 ${social.color} transition-all duration-200 hover:bg-white/80 shadow-lg hover:shadow-xl`}
+                    className="p-3 bg-white/50 backdrop-blur-sm rounded-xl text-gray-600 hover:bg-white/80 shadow-lg hover:shadow-xl"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     aria-label={social.label}
                   >
-                    <social.icon size={20} />
+                    <img src={social.icon} alt={social.label} className="w-5 h-5" />
                   </motion.a>
                 ))}
               </div>
             </motion.div>
 
-            {/* Services Column */}
+            {/* Services */}
             <motion.div
               className="space-y-6"
               initial={{ opacity: 0, y: 20 }}
@@ -169,7 +180,7 @@ const Footer = memo(() => {
               </ul>
             </motion.div>
 
-            {/* Informations Column */}
+            {/* Infos */}
             <motion.div
               className="space-y-6"
               initial={{ opacity: 0, y: 20 }}
@@ -193,7 +204,7 @@ const Footer = memo(() => {
               </ul>
             </motion.div>
 
-            {/* Contact Column */}
+            {/* Contact */}
             <motion.div
               className="space-y-6"
               initial={{ opacity: 0, y: 20 }}
@@ -203,33 +214,22 @@ const Footer = memo(() => {
             >
               <h3 className="text-lg font-semibold text-gray-900">Contact</h3>
               <div className="space-y-4">
-                <motion.div 
-                  className="flex items-start space-x-3"
-                  whileHover={{ x: 4 }}
-                >
+                <motion.div className="flex items-start space-x-3" whileHover={{ x: 4 }}>
                   <MapPin className="text-amber-500 mt-1 flex-shrink-0" size={18} />
-                  <span className="text-gray-600">
-                    Abidjan, Côte d'Ivoire
-                  </span>
+                  <span className="text-gray-600">Abidjan, Côte d'Ivoire</span>
                 </motion.div>
                 
-                <motion.div 
-                  className="flex items-center space-x-3"
-                  whileHover={{ x: 4 }}
-                >
+                <motion.div className="flex items-center space-x-3" whileHover={{ x: 4 }}>
                   <Phone className="text-amber-500 flex-shrink-0" size={18} />
-                  <a href="tel:+225" className="text-gray-600 hover:text-amber-600 transition-colors">
-                    +225 XX XX XX XX
+                  <a href="tel:+2250799977646" className="text-gray-600 hover:text-amber-600 transition-colors">
+                    07 99 97 76 46 – 05 06 09 86 25
                   </a>
                 </motion.div>
                 
-                <motion.div 
-                  className="flex items-center space-x-3"
-                  whileHover={{ x: 4 }}
-                >
+                <motion.div className="flex items-center space-x-3" whileHover={{ x: 4 }}>
                   <Mail className="text-amber-500 flex-shrink-0" size={18} />
-                  <a href="mailto:contact@beboutiques.com" className="text-gray-600 hover:text-amber-600 transition-colors">
-                    contact@beboutiques.com
+                  <a href="mailto:beboutique225@gmail.com" className="text-gray-600 hover:text-amber-600 transition-colors">
+                    beboutique225@gmail.com
                   </a>
                 </motion.div>
               </div>
@@ -237,7 +237,7 @@ const Footer = memo(() => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Bas */}
         <div className="border-t border-gray-200/50 bg-white/30 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <motion.div
@@ -270,5 +270,4 @@ const Footer = memo(() => {
 })
 
 Footer.displayName = 'Footer'
-
 export default Footer

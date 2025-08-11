@@ -1,0 +1,326 @@
+/* ========================================
+   PALETTE 1 - LUXE COGNAC & CHAMPAGNE
+   Sophistication et élégance premium
+======================================== */
+:root {
+  /* === COULEUR PRINCIPALE - COGNAC PROFOND === */
+  --color-primary-50: 248 243 238;   /* Très clair cognac */
+  --color-primary-100: 241 230 218;  /* Clair cognac */
+  --color-primary-200: 230 205 178;  /* Cognac léger */
+  --color-primary-300: 215 170 128;  /* Cognac */
+  --color-primary-400: 195 130 78;   /* Cognac moyen */
+  --color-primary-500: 181 54 25;    /* Cognac principal */
+  --color-primary-600: 165 45 20;    /* Cognac foncé */
+  --color-primary-700: 140 38 16;    /* Cognac très foncé */
+  --color-primary-800: 115 31 13;    /* Cognac sombre */
+  --color-primary-900: 90 24 10;     /* Cognac très sombre */
+
+  /* === COULEUR SECONDAIRE - CHAMPAGNE DORÉ === */
+  --color-secondary-50: 251 248 245;   /* Très clair champagne */
+  --color-secondary-100: 247 240 232;  /* Clair champagne */
+  --color-secondary-200: 241 237 232;  /* Champagne léger */
+  --color-secondary-300: 239 236 224;  /* Champagne */
+  --color-secondary-400: 238 231 227;  /* Champagne moyen */
+  --color-secondary-500: 234 201 203;  /* Champagne principal */
+  --color-secondary-600: 220 180 185;  /* Champagne foncé */
+  --color-secondary-700: 200 155 165;  /* Champagne très foncé */
+  --color-secondary-800: 175 130 140;  /* Champagne sombre */
+  --color-secondary-900: 145 105 115;  /* Champagne très sombre */
+}
+
+/* ========================================
+   PALETTE 2 - TERRE BRÛLÉE & SABLE ROSÉ
+   Chaleur naturelle et artisanat
+======================================== */
+.palette-2 {
+  /* === COULEUR PRINCIPALE - TERRE BRÛLÉE === */
+  --color-primary-50: 245 240 235;   /* Très clair terre */
+  --color-primary-100: 235 225 215;  /* Clair terre */
+  --color-primary-200: 220 200 180;  /* Terre léger */
+  --color-primary-300: 200 165 135;  /* Terre */
+  --color-primary-400: 185 125 90;   /* Terre moyen */
+  --color-primary-500: 178 87 8;     /* Terre principal */
+  --color-primary-600: 160 75 7;     /* Terre foncé */
+  --color-primary-700: 135 62 5;     /* Terre très foncé */
+  --color-primary-800: 110 50 4;     /* Terre sombre */
+  --color-primary-900: 85 37 3;      /* Terre très sombre */
+
+  /* === COULEUR SECONDAIRE - SABLE ROSÉ === */
+  --color-secondary-50: 250 245 242;   /* Très clair sable */
+  --color-secondary-100: 245 235 230;  /* Clair sable */
+  --color-secondary-200: 238 225 221;  /* Sable léger */
+  --color-secondary-300: 234 214 197;  /* Sable */
+  --color-secondary-400: 229 197 180;  /* Sable moyen */
+  --color-secondary-500: 221 172 161;  /* Sable principal */
+  --color-secondary-600: 200 150 140;  /* Sable foncé */
+  --color-secondary-700: 175 125 115;  /* Sable très foncé */
+  --color-secondary-800: 150 100 90;   /* Sable sombre */
+  --color-secondary-900: 120 80 70;    /* Sable très sombre */
+}
+
+/* ========================================
+   PALETTE 3 - AMBRE ROYAL & PERLE
+   Luxe intemporel et raffinement
+======================================== */
+.palette-3 {
+  /* === COULEUR PRINCIPALE - AMBRE ROYAL === */
+  --color-primary-50: 250 248 240;   /* Très clair ambre */
+  --color-primary-100: 245 240 225;  /* Clair ambre */
+  --color-primary-200: 235 225 195;  /* Ambre léger */
+  --color-primary-300: 225 195 155;  /* Ambre */
+  --color-primary-400: 218 170 100;  /* Ambre moyen */
+  --color-primary-500: 213 140 43;   /* Ambre principal */
+  --color-primary-600: 195 125 35;   /* Ambre foncé */
+  --color-primary-700: 170 105 28;   /* Ambre très foncé */
+  --color-primary-800: 140 85 22;    /* Ambre sombre */
+  --color-primary-900: 110 65 16;    /* Ambre très sombre */
+
+  /* === COULEUR SECONDAIRE - PERLE === */
+  --color-secondary-50: 252 250 248;   /* Très clair perle */
+  --color-secondary-100: 248 245 242;  /* Clair perle */
+  --color-secondary-200: 241 237 232;  /* Perle léger */
+  --color-secondary-300: 238 231 227;  /* Perle */
+  --color-secondary-400: 236 226 216;  /* Perle moyen */
+  --color-secondary-500: 236 213 213;  /* Perle principal */
+  --color-secondary-600: 220 195 195;  /* Perle foncé */
+  --color-secondary-700: 200 170 170;  /* Perle très foncé */
+  --color-secondary-800: 175 145 145;  /* Perle sombre */
+  --color-secondary-900: 145 115 115;  /* Perle très sombre */
+}
+
+/* ========================================
+   PALETTE 4 - BRONZE ANTIQUE & IVOIRE
+   Élégance classique et patrimoine
+======================================== */
+.palette-4 {
+  /* === COULEUR PRINCIPALE - BRONZE ANTIQUE === */
+  --color-primary-50: 248 245 240;   /* Très clair bronze */
+  --color-primary-100: 242 235 225;  /* Clair bronze */
+  --color-primary-200: 235 220 190;  /* Bronze léger */
+  --color-primary-300: 228 195 155;  /* Bronze */
+  --color-primary-400: 220 170 120;  /* Bronze moyen */
+  --color-primary-500: 211 141 70;   /* Bronze principal */
+  --color-primary-600: 190 125 60;   /* Bronze foncé */
+  --color-primary-700: 165 105 48;   /* Bronze très foncé */
+  --color-primary-800: 135 85 38;    /* Bronze sombre */
+  --color-primary-900: 105 65 28;    /* Bronze très sombre */
+
+  /* === COULEUR SECONDAIRE - IVOIRE === */
+  --color-secondary-50: 253 252 251;   /* Très clair ivoire */
+  --color-secondary-100: 250 248 245;  /* Clair ivoire */
+  --color-secondary-200: 245 242 238;  /* Ivoire léger */
+  --color-secondary-300: 241 237 232;  /* Ivoire */
+  --color-secondary-400: 239 236 224;  /* Ivoire moyen */
+  --color-secondary-500: 238 225 221;  /* Ivoire principal */
+  --color-secondary-600: 225 210 205;  /* Ivoire foncé */
+  --color-secondary-700: 205 190 185;  /* Ivoire très foncé */
+  --color-secondary-800: 180 165 160;  /* Ivoire sombre */
+  --color-secondary-900: 150 135 130;  /* Ivoire très sombre */
+}
+
+/* ========================================
+   PALETTE 5 - CUIVRE PATINÉ & CRÈME
+   Artisanat moderne et authenticité
+======================================== */
+.palette-5 {
+  /* === COULEUR PRINCIPALE - CUIVRE PATINÉ === */
+  --color-primary-50: 245 242 235;   /* Très clair cuivre */
+  --color-primary-100: 238 230 218;  /* Clair cuivre */
+  --color-primary-200: 228 210 185;  /* Cuivre léger */
+  --color-secondary-300: 215 185 150;  /* Cuivre */
+  --color-primary-400: 195 155 110;  /* Cuivre moyen */
+  --color-primary-500: 174 109 21;   /* Cuivre principal */
+  --color-primary-600: 155 95 18;    /* Cuivre foncé */
+  --color-primary-700: 130 80 15;    /* Cuivre très foncé */
+  --color-primary-800: 105 65 12;    /* Cuivre sombre */
+  --color-primary-900: 80 48 8;      /* Cuivre très sombre */
+
+  /* === COULEUR SECONDAIRE - CRÈME === */
+  --color-secondary-50: 252 251 249;   /* Très clair crème */
+  --color-secondary-100: 248 246 243;  /* Clair crème */
+  --color-secondary-200: 243 240 236;  /* Crème léger */
+  --color-secondary-300: 239 236 224;  /* Crème */
+  --color-secondary-400: 238 231 227;  /* Crème moyen */
+  --color-secondary-500: 236 226 216;  /* Crème principal */
+  --color-secondary-600: 220 208 198;  /* Crème foncé */
+  --color-secondary-700: 200 185 175;  /* Crème très foncé */
+  --color-secondary-800: 175 160 150;  /* Crème sombre */
+  --color-secondary-900: 145 130 120;  /* Crème très sombre */
+}
+
+/* ========================================
+   PALETTE 6 - OR VIEILLI & SABLE CHAUD
+   Luxe accessible et confort
+======================================== */
+.palette-6 {
+  /* === COULEUR PRINCIPALE - OR VIEILLI === */
+  --color-primary-50: 252 248 242;   /* Très clair or */
+  --color-primary-100: 248 242 230;  /* Clair or */
+  --color-primary-200: 240 228 205;  /* Or léger */
+  --color-primary-300: 232 210 175;  /* Or */
+  --color-primary-400: 228 190 145;  /* Or moyen */
+  --color-primary-500: 224 185 116;  /* Or principal */
+  --color-primary-600: 205 165 100;  /* Or foncé */
+  --color-primary-700: 180 140 80;   /* Or très foncé */
+  --color-primary-800: 150 115 65;   /* Or sombre */
+  --color-primary-900: 120 90 48;    /* Or très sombre */
+
+  /* === COULEUR SECONDAIRE - SABLE CHAUD === */
+  --color-secondary-50: 253 251 248;   /* Très clair sable */
+  --color-secondary-100: 250 247 243;  /* Clair sable */
+  --color-secondary-200: 245 240 235;  /* Sable léger */
+  --color-secondary-300: 241 237 232;  /* Sable */
+  --color-secondary-400: 239 236 224;  /* Sable moyen */
+  --color-secondary-500: 235 219 187;  /* Sable principal */
+  --color-secondary-600: 220 200 170;  /* Sable foncé */
+  --color-secondary-700: 200 180 150;  /* Sable très foncé */
+  --color-secondary-800: 175 155 125;  /* Sable sombre */
+  --color-secondary-900: 145 125 100;  /* Sable très sombre */
+}
+
+/* ========================================
+   PALETTE 7 - ACAJOU & ROSE POUDRÉ
+   Sophistication féminine et élégance
+======================================== */
+.palette-7 {
+  /* === COULEUR PRINCIPALE - ACAJOU === */
+  --color-primary-50: 245 238 235;   /* Très clair acajou */
+  --color-primary-100: 235 225 218;  /* Clair acajou */
+  --color-primary-200: 220 200 185;  /* Acajou léger */
+  --color-primary-300: 200 170 150;  /* Acajou */
+  --color-primary-400: 175 135 115;  /* Acajou moyen */
+  --color-primary-500: 137 53 20;    /* Acajou principal */
+  --color-primary-600: 122 45 16;    /* Acajou foncé */
+  --color-primary-700: 102 38 13;    /* Acajou très foncé */
+  --color-primary-800: 82 30 10;     /* Acajou sombre */
+  --color-primary-900: 62 22 7;      /* Acajou très sombre */
+
+  /* === COULEUR SECONDAIRE - ROSE POUDRÉ === */
+  --color-secondary-50: 250 247 245;   /* Très clair rose */
+  --color-secondary-100: 245 240 238;  /* Clair rose */
+  --color-secondary-200: 238 230 226;  /* Rose léger */
+  --color-secondary-300: 232 220 215;  /* Rose */
+  --color-secondary-400: 226 210 200;  /* Rose moyen */
+  --color-secondary-500: 232 176 178;  /* Rose principal */
+  --color-secondary-600: 215 155 160;  /* Rose foncé */
+  --color-secondary-700: 190 130 135;  /* Rose très foncé */
+  --color-secondary-800: 165 105 110;  /* Rose sombre */
+  --color-secondary-900: 135 80 85;    /* Rose très sombre */
+}
+
+/* ========================================
+   PALETTE 8 - CARAMEL & LIN NATUREL
+   Douceur naturelle et authenticité
+======================================== */
+.palette-8 {
+  /* === COULEUR PRINCIPALE - CARAMEL === */
+  --color-primary-50: 248 245 240;   /* Très clair caramel */
+  --color-primary-100: 242 235 225;  /* Clair caramel */
+  --color-primary-200: 230 215 195;  /* Caramel léger */
+  --color-primary-300: 215 190 165;  /* Caramel */
+  --color-primary-400: 195 160 130;  /* Caramel moyen */
+  --color-primary-500: 210 98 88;    /* Caramel principal */
+  --color-primary-600: 190 85 75;    /* Caramel foncé */
+  --color-primary-700: 165 70 60;    /* Caramel très foncé */
+  --color-primary-800: 135 55 48;    /* Caramel sombre */
+  --color-primary-900: 105 42 36;    /* Caramel très sombre */
+
+  /* === COULEUR SECONDAIRE - LIN NATUREL === */
+  --color-secondary-50: 252 251 248;   /* Très clair lin */
+  --color-secondary-100: 248 246 242;  /* Clair lin */
+  --color-secondary-200: 243 240 235;  /* Lin léger */
+  --color-secondary-300: 238 234 228;  /* Lin */
+  --color-secondary-400: 235 230 222;  /* Lin moyen */
+  --color-secondary-500: 234 214 197;  /* Lin principal */
+  --color-secondary-600: 218 195 178;  /* Lin foncé */
+  --color-secondary-700: 195 170 155;  /* Lin très foncé */
+  --color-secondary-800: 170 145 130;  /* Lin sombre */
+  --color-secondary-900: 140 115 100;  /* Lin très sombre */
+}
+
+/* ========================================
+   PALETTE 9 - MIEL & BLANC CASSÉ
+   Pureté chaleureuse et minimalisme luxe
+======================================== */
+.palette-9 {
+  /* === COULEUR PRINCIPALE - MIEL === */
+  --color-primary-50: 250 248 242;   /* Très clair miel */
+  --color-primary-100: 245 242 230;  /* Clair miel */
+  --color-primary-200: 235 228 205;  /* Miel léger */
+  --color-primary-300: 225 210 175;  /* Miel */
+  --color-primary-400: 215 185 140;  /* Miel moyen */
+  --color-primary-500: 204 109 17;   /* Miel principal */
+  --color-primary-600: 185 95 14;    /* Miel foncé */
+  --color-primary-700: 160 80 11;    /* Miel très foncé */
+  --color-primary-800: 130 65 8;     /* Miel sombre */
+  --color-primary-900: 100 48 6;     /* Miel très sombre */
+
+  /* === COULEUR SECONDAIRE - BLANC CASSÉ === */
+  --color-secondary-50: 254 253 252;   /* Très clair blanc cassé */
+  --color-secondary-100: 252 250 248;  /* Clair blanc cassé */
+  --color-secondary-200: 248 245 242;  /* Blanc cassé léger */
+  --color-secondary-300: 243 240 236;  /* Blanc cassé */
+  --color-secondary-400: 241 237 232;  /* Blanc cassé moyen */
+  --color-secondary-500: 238 231 227;  /* Blanc cassé principal */
+  --color-secondary-600: 225 218 214;  /* Blanc cassé foncé */
+  --color-secondary-700: 205 198 194;  /* Blanc cassé très foncé */
+  --color-secondary-800: 180 173 169;  /* Blanc cassé sombre */
+  --color-secondary-900: 150 143 139;  /* Blanc cassé très sombre */
+}
+
+/* ========================================
+   PALETTE 10 - CANNELLE & BEIGE SOYEUX
+   Épices douces et confort premium
+======================================== */
+.palette-10 {
+  /* === COULEUR PRINCIPALE - CANNELLE === */
+  --color-primary-50: 246 242 238;   /* Très clair cannelle */
+  --color-primary-100: 238 230 222;  /* Clair cannelle */
+  --color-primary-200: 225 210 195;  /* Cannelle léger */
+  --color-primary-300: 210 185 165;  /* Cannelle */
+  --color-primary-400: 190 155 130;  /* Cannelle moyen */
+  --color-primary-500: 211 135 112;  /* Cannelle principal */
+  --color-primary-600: 190 115 95;   /* Cannelle foncé */
+  --color-primary-700: 165 95 78;    /* Cannelle très foncé */
+  --color-primary-800: 135 75 60;    /* Cannelle sombre */
+  --color-primary-900: 105 55 45;    /* Cannelle très sombre */
+
+  /* === COULEUR SECONDAIRE - BEIGE SOYEUX === */
+  --color-secondary-50: 252 250 247;   /* Très clair beige */
+  --color-secondary-100: 248 245 241;  /* Clair beige */
+  --color-secondary-200: 243 238 233;  /* Beige léger */
+  --color-secondary-300: 238 232 226;  /* Beige */
+  --color-secondary-400: 236 229 222;  /* Beige moyen */
+  --color-secondary-500: 224 206 170;  /* Beige principal */
+  --color-secondary-600: 205 185 150;  /* Beige foncé */
+  --color-secondary-700: 180 160 130;  /* Beige très foncé */
+  --color-secondary-800: 155 135 110;  /* Beige sombre */
+  --color-secondary-900: 125 105 85;   /* Beige très sombre */
+
+
+
+
+  /* === COULEURS PRINCIPALES - BLEU === */
+--color-primary-50: 239 246 255;   /* Bleu très clair */
+--color-primary-100: 219 234 254;  /* Bleu clair */
+--color-primary-200: 191 219 254;  /* Bleu léger */
+--color-primary-300: 147 197 253;  /* Bleu doux */
+--color-primary-400: 96 165 250;   /* Bleu moyen */
+--color-primary-500: 59 130 246;   /* Bleu principal */
+--color-primary-600: 37 99 235;    /* Bleu foncé */
+--color-primary-700: 29 78 216;    /* Bleu très foncé */
+--color-primary-800: 30 64 175;    /* Bleu profond */
+--color-primary-900: 30 58 138;    /* Bleu nuit */
+
+/* === COULEURS SECONDAIRES - VERT === */
+--color-secondary-50: 240 253 244;  /* Vert très clair */
+--color-secondary-100: 220 252 231; /* Vert clair */
+--color-secondary-200: 187 247 208; /* Vert léger */
+--color-secondary-300: 134 239 172; /* Vert tendre */
+--color-secondary-400: 74 222 128;  /* Vert moyen */
+--color-secondary-500: 34 197 94;   /* Vert principal */
+--color-secondary-600: 22 163 74;   /* Vert foncé */
+--color-secondary-700: 21 128 61;   /* Vert très foncé */
+--color-secondary-800: 22 101 52;   /* Vert profond */
+--color-secondary-900: 20 83 45;    /* Vert nuit */
+}

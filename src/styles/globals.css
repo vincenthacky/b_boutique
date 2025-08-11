@@ -1,90 +1,363 @@
-
-
 /* Import des polices Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
-
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-/* Variables CSS pour les thèmes */
+/* ========================================
+   PALETTE CENTRALE DE COULEURS
+   ======================================== */
 :root {
-  /* Couleurs principales - Be Boutique */
-  --color-primary-50: 255 251 235;  /* Très clair ambre */
-  --color-primary-100: 254 243 199; /* Clair ambre */
-  --color-primary-200: 253 230 138; /* Ambre léger */
-  --color-primary-300: 252 211 77;  /* Ambre */
-  --color-primary-400: 251 191 36;  /* Ambre moyen */
-  --color-primary-500: 245 158 11;  /* Ambre principal */
-  --color-primary-600: 217 119 6;   /* Ambre foncé */
-  --color-primary-700: 180 83 9;    /* Ambre très foncé */
-  --color-primary-800: 146 64 14;   /* Orange foncé */
-  --color-primary-900: 120 53 15;   /* Orange très foncé */
 
-  /* Couleurs secondaires - Orange */
-  --color-secondary-50: 255 247 237;
-  --color-secondary-100: 255 237 213;
-  --color-secondary-200: 254 215 170;
-  --color-secondary-300: 253 186 116;
-  --color-secondary-400: 251 146 60;
-  --color-secondary-500: 249 115 22;  /* Orange principal */
-  --color-secondary-600: 234 88 12;
-  --color-secondary-700: 194 65 12;
-  --color-secondary-800: 154 52 18;
-  --color-secondary-900: 124 45 18;
+/* === COULEURS PRINCIPALES - ORANGE (#d27a02) === */
+--color-primary-50: 255 249 235;   /* Très clair */
+--color-primary-100: 254 240 205;  /* Clair */
+--color-primary-200: 253 220 160;  /* Pastel */
+--color-primary-300: 252 191 102;  /* Chaud doux */
+--color-primary-400: 250 162 51;   /* Chaud vif */
+--color-primary-500: 210 122 2;    /* Orange principal (#d27a02) */
+--color-primary-600: 186 108 2;    /* Foncé léger */
+--color-primary-700: 153 87 1;     /* Plus sombre */
+--color-primary-800: 122 69 1;     /* Presque brun orangé */
+--color-primary-900: 96 54 0;      /* Très foncé */
 
-  /* Couleurs système - Thème clair */
+ /* === COULEUR SECONDAIRE - ROSE POUDRÉ === */
+  --color-secondary-50: 250 247 245;   /* Très clair rose */
+  --color-secondary-100: 245 240 238;  /* Clair rose */
+  --color-secondary-200: 238 230 226;  /* Rose léger */
+  --color-secondary-300: 232 220 215;  /* Rose */
+  --color-secondary-400: 226 210 200;  /* Rose moyen */
+  --color-secondary-500: 232 176 178;  /* Rose principal */
+  --color-secondary-600: 215 155 160;  /* Rose foncé */
+  --color-secondary-700: 190 130 135;  /* Rose très foncé */
+  --color-secondary-800: 165 105 110;  /* Rose sombre */
+  --color-secondary-900: 135 80 85;    /* Rose très sombre */
+
+
+
+ /* === TIMER COMPONENT === */
+  --timer-bg: var(--color-red-50);
+  --timer-border: var(--color-red-200);
+
+
+  /* === COULEURS VIOLETTES === */
+  --color-violet-50: 245 243 255;
+  --color-violet-100: 237 233 254;
+  --color-violet-200: 221 214 254;
+  --color-violet-300: 196 181 253;
+  --color-violet-400: 167 139 250;
+  --color-violet-500: 139 92 246;
+  --color-violet-600: 124 58 237;
+  --color-violet-700: 109 40 217;
+  --color-violet-800: 91 33 182;
+  --color-violet-900: 76 29 149;
+
+  /* === COULEURS D'ÉTAT === */
+  --color-success-50: 240 253 244;
+  --color-success-100: 220 252 231;
+  --color-success-200: 187 247 208;
+  --color-success-300: 134 239 172;
+  --color-success-400: 74 222 128;
+  --color-success-500: 34 197 94;   /* Success principal */
+  --color-success-600: 22 163 74;
+  --color-success-700: 21 128 61;
+  --color-success-800: 22 101 52;
+  --color-success-900: 20 83 45;
+
+  --color-warning-50: 255 251 235;
+  --color-warning-100: 254 243 199;
+  --color-warning-200: 253 230 138;
+  --color-warning-300: 252 211 77;
+  --color-warning-400: 251 191 36;
+  --color-warning-500: 245 158 11;  /* Warning principal - identique au primary */
+  --color-warning-600: 217 119 6;
+  --color-warning-700: 180 83 9;
+  --color-warning-800: 146 64 14;
+  --color-warning-900: 120 53 15;
+
+  --color-error-50: 254 242 242;
+  --color-error-100: 254 226 226;
+  --color-error-200: 254 202 202;
+  --color-error-300: 252 165 165;
+  --color-error-400: 248 113 113;
+  --color-error-500: 239 68 68;     /* Error principal */
+  --color-error-600: 220 38 38;
+  --color-error-700: 185 28 28;
+  --color-error-800: 153 27 27;
+  --color-error-900: 127 29 29;
+
+  --color-info-50: 239 246 255;
+  --color-info-100: 219 234 254;
+  --color-info-200: 191 219 254;
+  --color-info-300: 147 197 253;
+  --color-info-400: 96 165 250;
+  --color-info-500: 59 130 246;     /* Info principal */
+  --color-info-600: 37 99 235;
+  --color-info-700: 29 78 216;
+  --color-info-800: 30 64 175;
+  --color-info-900: 30 58 138;
+
+  /* === COULEURS ROSES === */
+  --color-pink-50: 253 242 248;
+  --color-pink-100: 252 231 243;
+  --color-pink-200: 251 207 232;
+  --color-pink-300: 249 168 212;
+  --color-pink-400: 244 114 182;
+  --color-pink-500: 236 72 153;
+  --color-pink-600: 219 39 119;
+  --color-pink-700: 190 24 93;
+  --color-pink-800: 157 23 77;
+  --color-pink-900: 131 24 67;
+
+  /* === COULEURS ROUGES === */
+  --color-red-50: 254 242 242;
+  --color-red-100: 254 226 226;
+  --color-red-200: 254 202 202;
+  --color-red-300: 252 165 165;
+  --color-red-400: 248 113 113;
+  --color-red-500: 239 68 68;
+  --color-red-600: 220 38 38;
+  --color-red-700: 185 28 28;
+  --color-red-800: 153 27 27;
+  --color-red-900: 127 29 29;
+
+  /* === COULEURS GRISES === */
+  --color-gray-50: 249 250 251;
+  --color-gray-100: 243 244 246;
+  --color-gray-200: 229 231 235;
+  --color-gray-300: 209 213 219;
+  --color-gray-400: 156 163 175;
+  --color-gray-500: 107 114 128;
+  --color-gray-600: 75 85 99;
+  --color-gray-700: 55 65 81;
+  --color-gray-800: 31 41 55;
+  --color-gray-900: 17 24 39;
+
+  /* === COULEURS NEUTRES === */
+  --color-white: 255 255 255;
+  --color-black: 0 0 0;
+
+  /* === COULEURS SYSTÈME === */
   --color-background: 255 255 255;
-  --color-foreground: 15 23 42;
+  --color-foreground: 17 24 39;
   --color-card: 255 255 255;
-  --color-card-foreground: 15 23 42;
-  --color-muted: 248 250 252;
-  --color-muted-foreground: 100 116 139;
-  --color-border: 226 232 240;
-  --color-input: 226 232 240;
+  --color-card-foreground: 17 24 39;
+  --color-muted: 249 250 251;
+  --color-muted-foreground: 107 114 128;
+  --color-border: 229 231 235;
+  --color-input: 229 231 235;
   --color-ring: 245 158 11;
 
-  /* Couleurs d'état */
-  --color-success: 34 197 94;
-  --color-warning: 245 158 11;
-  --color-error: 239 68 68;
-  --color-info: 59 130 246;
+  /* ========================================
+     VARIABLES SPÉCIFIQUES COMPOSANTS
+     (Utilisant exclusivement la palette)
+     ======================================== */
 
-  /* Ombres personnalisées */
-  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-large: 0 8px 32px rgba(0, 0, 0, 0.12);
-  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.15);
+  /* === FEATURED SECTION === */
+  --featured-bg-gradient: linear-gradient(to bottom, rgb(var(--color-white)), rgba(var(--color-primary-50), 0.3), rgb(var(--color-white)));
+  --featured-btn-primary-bg: linear-gradient(to right, rgb(var(--color-primary-500)), rgb(var(--color-primary-400)));
+  --featured-btn-primary-shadow: 0 25px 50px -12px rgba(var(--color-black), 0.25);
+  --featured-btn-primary-shadow-hover: rgba(var(--color-primary-500), 0.25);
+  --featured-btn-text: var(--color-white);
+  --featured-btn-hover-scale: 1.05;
+  --featured-btn-hover-y: -3px;
+  --featured-btn-tap-scale: 0.95;
+  --featured-arrow-translate: 8px;
 
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, rgb(245 158 11) 0%, rgb(249 115 22) 100%);
-  --gradient-secondary: linear-gradient(135deg, rgb(249 115 22) 0%, rgb(234 88 12) 100%);
-  --gradient-hero: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(0, 0, 0, 0.4) 100%);
+  /* === TESTIMONIALS SECTION === */
+  --testimonials-bg-gradient: linear-gradient(to bottom, rgb(var(--color-gray-50)), rgb(var(--color-white)));
+  --testimonials-pattern-bg: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(var(--color-black), 0.05) 35px, rgba(var(--color-black), 0.05) 70px);
+  --testimonials-pattern-opacity: 0.05;
+  --testimonials-card-bg: var(--color-white);
+  --testimonials-card-border: var(--color-gray-100);
+  --testimonials-card-shadow: 0 25px 50px -12px rgba(var(--color-black), 0.25);
+  --testimonials-avatar-border: var(--color-primary-400);
+  --testimonials-verified-bg: var(--color-success-500);
+  --testimonials-star-color: var(--color-primary-400);
+  --testimonials-text-primary: var(--color-gray-900);
+  --testimonials-text-secondary: var(--color-gray-500);
+  --testimonials-text-accent: var(--color-primary-600);
+  --testimonials-dot-active: var(--color-primary-500);
+  --testimonials-dot-inactive: var(--color-gray-300);
+  --testimonials-dot-hover: var(--color-gray-400);
+
+  /* === SERVICES SECTION === */
+  --services-bg-gradient: linear-gradient(to bottom right, rgb(var(--color-gray-50)), rgb(var(--color-primary-50)));
+  --services-card-bg: var(--color-white);
+  --services-card-border: var(--color-gray-100);
+  --services-card-shadow: 0 25px 50px -12px rgba(var(--color-black), 0.25);
+  --services-text-primary: var(--color-gray-900);
+  --services-text-secondary: var(--color-gray-600);
+  --services-text-hover: var(--color-primary-600);
+  --services-icon-text: var(--color-white);
+
+  /* === NEWSLETTER SECTION === */
+  --newsletter-section-bg: var(--color-white);
+  --newsletter-bg-gradient: linear-gradient(to bottom right, rgb(var(--color-primary-100)), rgb(var(--color-primary-50)), rgb(var(--color-white)));
+  --newsletter-decoration-amber: rgba(var(--color-primary-400), 0.3);
+  --newsletter-decoration-orange: rgba(var(--color-secondary-400), 0.3);
+  --newsletter-icon-bg: rgba(var(--color-primary-500), 0.1);
+
+  /* === FINAL CTA SECTION === */
+  --final-cta-bg-gradient: linear-gradient(to bottom right, rgb(var(--color-primary-600)), rgb(var(--color-primary-500)), rgb(var(--color-secondary-500)));
+  --final-cta-bubble-primary: rgba(var(--color-white), 0.1);
+  --final-cta-bubble-secondary: rgba(var(--color-black), 0.1);
+  --final-cta-badge-bg: rgba(var(--color-white), 0.2);
+  --final-cta-text-primary: var(--color-white);
+  --final-cta-text-secondary: var(--color-primary-50);
+  --final-cta-text-tertiary: var(--color-primary-100);
+  --final-cta-btn-primary-bg: var(--color-white);
+  --final-cta-btn-primary-text: var(--color-primary-600);
+  --final-cta-btn-primary-shadow: rgba(var(--color-white), 0.25);
+  --final-cta-btn-secondary-bg: transparent;
+  --final-cta-btn-secondary-border: rgba(var(--color-white), 0.5);
+  --final-cta-btn-secondary-hover: rgba(var(--color-white), 0.1);
+  --final-cta-btn-secondary-text: var(--color-white);
+  --final-cta-stats-card-bg: rgba(var(--color-white), 0.1);
+  --final-cta-stats-card-border: rgba(var(--color-white), 0.2);
+  --final-cta-stats-card-hover: rgba(var(--color-white), 0.15);
+  --final-cta-stats-icon-color: var(--color-primary-100);
+  --final-cta-stats-number-color: var(--color-white);
+  --final-cta-stats-label-color: var(--color-primary-50);
+
+  /* === NEW PRODUCTS SECTION === */
+  --new-products-bg: var(--color-white);
+  --new-products-btn-bg: linear-gradient(to right, rgb(var(--color-primary-500)), rgb(var(--color-primary-400)));
+  --new-products-btn-text: var(--color-white);
+  --new-products-btn-shadow: 0 25px 50px -12px rgba(var(--color-black), 0.25);
+  --new-products-btn-shadow-hover: rgba(var(--color-primary-500), 0.25);
+  
+  /* === COLLECTIONS SECTION === */
+  --collections-bg-gradient: linear-gradient(to bottom right, rgb(var(--color-primary-50)), rgb(var(--color-white)), rgb(var(--color-primary-50)));
+  --collections-card-bg: var(--color-white);
+  --collections-card-border: var(--color-gray-100);
+  --collections-card-shadow: 0 25px 50px -12px rgba(var(--color-black), 0.25);
+  --collections-card-shadow-hover: 0 35px 60px -12px rgba(var(--color-black), 0.35);
+  --collections-badge-bg: rgba(var(--color-white), 0.2);
+  --collections-overlay-bg: rgba(var(--color-white), 0.2);
+  --collections-overlay-hover-bg: rgba(var(--color-white), 0.3);
+  --collections-text-primary: var(--color-white);
+  --collections-text-secondary: rgba(var(--color-white), 0.9);
+  --collections-text-tertiary: rgba(var(--color-white), 0.8);
+  --collections-btn-primary-bg: linear-gradient(to right, rgb(var(--color-violet-600)), rgb(var(--color-violet-500)));
+  --collections-btn-primary-shadow: 0 25px 50px -12px rgba(var(--color-black), 0.25);
+  --collections-btn-primary-shadow-hover: rgba(var(--color-violet-600), 0.25);
+  
+  /* === BRAND PARTNERS SECTION === */
+  --brands-bg-gradient: linear-gradient(to bottom, rgb(var(--color-white)), rgb(var(--color-gray-50)));
+  --brands-card-bg: var(--color-white);
+  --brands-card-border: var(--color-gray-100);
+  --brands-card-shadow: 0 10px 15px -3px rgba(var(--color-black), 0.1), 0 4px 6px -2px rgba(var(--color-black), 0.05);
+  --brands-card-shadow-hover: 0 25px 50px -12px rgba(var(--color-black), 0.25);
+  --brands-text-primary: var(--color-gray-900);
+  --brands-text-secondary: var(--color-gray-500);
+  --brands-text-hover: var(--color-primary-600);
+  --brands-overlay-gradient: linear-gradient(to bottom right, rgba(var(--color-primary-400), 0), rgba(var(--color-secondary-400), 0));
+  --brands-overlay-hover-gradient: linear-gradient(to bottom right, rgba(var(--color-primary-400), 0.1), rgba(var(--color-secondary-400), 0.1));
+  --brands-stats-icon-color: var(--color-primary-500);
+  --brands-stats-text-primary: var(--color-gray-900);
+  --brands-stats-text-secondary: var(--color-gray-600);
+  
+  /* === TRANSITIONS ET ANIMATIONS === */
+  --section-card-hover-y: -10px;
+  --section-card-hover-scale: 1.05;
+  --section-image-scale: 1.1;
+  --section-brand-hover-scale: 1.05;
+  --section-brand-hover-y: -5px;
+
+  /* === GRADIENTS POUR BADGES === */
+  --gradient-red-pink: linear-gradient(to right, rgb(var(--color-red-500)), rgb(var(--color-pink-500)));
+  --gradient-red-400: linear-gradient(to bottom right, rgb(var(--color-red-400)), rgb(var(--color-red-400)));
+  --gradient-amber-primary: linear-gradient(to right, rgb(var(--color-primary-500)), rgb(var(--color-primary-500)));
+  --gradient-amber-hover: linear-gradient(to right, rgb(var(--color-primary-600)), rgb(var(--color-secondary-500)));
+  
+  /* === ÉTOILES === */
+  --color-star-filled: var(--color-primary-400);
+  --color-star-empty: var(--color-gray-300);
+
+  /* === OVERLAY ET BACKDROP === */
+  --overlay-gradient: linear-gradient(to top, rgba(var(--color-black), 0.6), rgba(var(--color-black), 0.2), transparent);
+  --backdrop-blur-white: rgba(var(--color-white), 0.95);
+
+  /* === COUNTDOWN TIMER === */
+  --timer-bg: rgba(var(--color-error-500), 0.1);
+
+  /* === HERO SECTION === */
+  --hero-overlay-primary: linear-gradient(to bottom, rgba(var(--color-black), 0.4), rgba(var(--color-black), 0.2), rgba(var(--color-black), 0.6));
+  --hero-overlay-secondary: linear-gradient(to right, rgba(var(--color-primary-700), 0.3), transparent, rgba(var(--color-primary-700), 0.3));
+  --hero-bubble-amber: rgba(var(--color-primary-400), 0.2);
+  --hero-bubble-orange: rgba(var(--color-secondary-300), 0.2);
+  --hero-bubble-fuchsia: rgba(192, 38, 211, 0.2);
+  --hero-bubble-pink: rgba(var(--color-pink-300), 0.2);
+  --hero-text-white: var(--color-white);
+  --hero-text-amber-50: rgba(var(--color-primary-50), 0.9);
+  --hero-divider-gradient: linear-gradient(to right, transparent, rgb(var(--color-primary-400)));
+  --hero-title-gradient: linear-gradient(to right, rgb(var(--color-primary-300)), rgb(var(--color-primary-400)), rgb(var(--color-secondary-400)));
+  --hero-btn-primary-bg: linear-gradient(to right, rgb(var(--color-primary-500)), rgb(var(--color-primary-400)));
+  --hero-btn-primary-shadow: rgba(var(--color-primary-500), 0.25);
+  --hero-btn-secondary-bg: rgba(var(--color-white), 0.1);
+  --hero-btn-secondary-border: rgba(var(--color-white), 0.3);
+  --hero-btn-secondary-hover: rgba(var(--color-white), 0.2);
+  --hero-scroll-border: rgba(var(--color-primary-500), 0.5);
+  --hero-scroll-dot: rgb(var(--color-primary-400));
+
+  /* === CATEGORIES SECTION === */
+  --categories-bg-gradient: linear-gradient(to bottom, rgb(var(--color-gray-50)), rgb(var(--color-white)));
+  --categories-pattern-opacity: 0.05;
+  --categories-pattern-svg: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  --categories-card-border: rgba(var(--color-white), 0.5);
+  --categories-card-backdrop: rgba(var(--color-white), 0.1);
+  --categories-card-hover-overlay: linear-gradient(to bottom right, rgba(var(--color-white), 0), rgba(var(--color-white), 0.1));
+  --categories-card-shadow-hover: 0 25px 50px -12px rgba(var(--color-black), 0.25);
+  --categories-text-primary: var(--color-gray-900);
+  --categories-text-secondary: var(--color-gray-700);
+  --categories-text-tertiary: var(--color-gray-600);
+  --categories-arrow-color: var(--color-gray-700);
+
+  /* === OMBRES PERSONNALISÉES === */
+  --shadow-soft: 0 2px 8px rgba(var(--color-black), 0.04);
+  --shadow-medium: 0 4px 20px rgba(var(--color-black), 0.08);
+  --shadow-large: 0 8px 32px rgba(var(--color-black), 0.12);
+  --shadow-xl: 0 20px 60px rgba(var(--color-black), 0.15);
+  --shadow-card: 0 10px 15px -3px rgba(var(--color-black), 0.1), 0 4px 6px -2px rgba(var(--color-black), 0.05);
+  --shadow-card-hover: 0 25px 50px -12px rgba(var(--color-black), 0.25);
+  --shadow-button: 0 10px 15px -3px rgba(var(--color-black), 0.1), 0 4px 6px -2px rgba(var(--color-black), 0.05);
+  --shadow-button-hover: 0 20px 25px -5px rgba(var(--color-black), 0.1), 0 10px 10px -5px rgba(var(--color-black), 0.04);
+
+  /* === GRADIENTS PRINCIPAUX === */
+  --gradient-primary: linear-gradient(135deg, rgb(var(--color-primary-500)) 0%, rgb(var(--color-secondary-500)) 100%);
+  --gradient-secondary: linear-gradient(135deg, rgb(var(--color-secondary-500)) 0%, rgb(var(--color-secondary-600)) 100%);
+  --gradient-hero: linear-gradient(135deg, rgba(var(--color-gray-900), 0.8) 0%, rgba(var(--color-black), 0.4) 100%);
 }
+
+/* ========================================
+   THÈMES ALTERNATIFS
+   ======================================== */
 
 /* Thème sombre */
 [data-theme="dark"] {
-  --color-background: 15 23 42;
-  --color-foreground: 248 250 252;
-  --color-card: 30 41 59;
-  --color-card-foreground: 248 250 252;
-  --color-muted: 30 41 59;
-  --color-muted-foreground: 148 163 184;
-  --color-border: 51 65 85;
-  --color-input: 51 65 85;
+  --color-background: var(--color-gray-900);
+  --color-foreground: var(--color-gray-50);
+  --color-card: var(--color-gray-800);
+  --color-card-foreground: var(--color-gray-50);
+  --color-muted: var(--color-gray-800);
+  --color-muted-foreground: var(--color-gray-400);
+  --color-border: var(--color-gray-700);
+  --color-input: var(--color-gray-700);
 }
 
 /* Thème coloré */
 [data-theme="colorful"] {
-  --color-primary-500: 236 72 153;  /* Rose vif */
-  --color-secondary-500: 147 51 234; /* Violet */
-  --gradient-primary: linear-gradient(135deg, rgb(236 72 153) 0%, rgb(147 51 234) 100%);
+  --color-primary-500: var(--color-pink-500);
+  --color-secondary-500: var(--color-violet-600);
+  --gradient-primary: linear-gradient(135deg, rgb(var(--color-pink-500)) 0%, rgb(var(--color-violet-600)) 100%);
 }
 
-/* Styles de base */
+/* ========================================
+   STYLES DE BASE
+   ======================================== */
 * {
   box-sizing: border-box;
 }
@@ -128,7 +401,9 @@ body {
   color: rgb(var(--color-primary-900));
 }
 
-/* Animations personnalisées */
+/* ========================================
+   ANIMATIONS PERSONNALISÉES
+   ======================================== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -189,7 +464,16 @@ body {
   }
 }
 
-/* Classes utilitaires */
+@keyframes loading-dots {
+  0%, 20% { content: ''; }
+  40% { content: '.'; }
+  60% { content: '..'; }
+  80%, 100% { content: '...'; }
+}
+
+/* ========================================
+   CLASSES UTILITAIRES
+   ======================================== */
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out;
 }
@@ -223,15 +507,15 @@ body {
 
 /* Glassmorphism */
 .glass {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(var(--color-white), 0.1);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(var(--color-white), 0.2);
 }
 
 .glass-dark {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(var(--color-black), 0.1);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(var(--color-white), 0.1);
 }
 
 /* Gradient text */
@@ -242,38 +526,96 @@ body {
   background-clip: text;
 }
 
-/* Button styles */
+/* ========================================
+   STYLES DE BOUTONS
+   ======================================== */
 .btn-primary {
-  @apply bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300;
+  background: var(--gradient-primary);
+  @apply text-white font-semibold px-6 py-3 rounded-xl;
+  box-shadow: var(--shadow-button);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-button-hover);
 }
 
 .btn-secondary {
-  @apply border-2 border-amber-500 text-amber-600 font-semibold px-6 py-3 rounded-xl hover:bg-amber-500 hover:text-white transition-all duration-300;
+  @apply border-2 font-semibold px-6 py-3 rounded-xl transition-all duration-300;
+  border-color: rgb(var(--color-primary-500));
+  color: rgb(var(--color-primary-600));
+}
+
+.btn-secondary:hover {
+  background-color: rgb(var(--color-primary-500));
+  color: rgb(var(--color-white));
 }
 
 .btn-ghost {
-  @apply text-gray-600 hover:text-amber-600 hover:bg-amber-50 px-4 py-2 rounded-lg transition-all duration-300;
+  @apply px-4 py-2 rounded-lg transition-all duration-300;
+  color: rgb(var(--color-gray-600));
 }
 
-/* Card styles */
+.btn-ghost:hover {
+  color: rgb(var(--color-primary-600));
+  background-color: rgb(var(--color-primary-50));
+}
+
+/* ========================================
+   STYLES DE CARTES
+   ======================================== */
 .card {
-  @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100;
+  background-color: rgb(var(--color-white));
+  @apply rounded-2xl transition-all duration-300;
+  border: 1px solid rgb(var(--color-gray-100));
+  box-shadow: var(--shadow-card);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
 }
 
 .card-dark {
-  @apply bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-700;
+  background-color: rgb(var(--color-gray-800));
+  @apply rounded-2xl transition-all duration-300;
+  border: 1px solid rgb(var(--color-gray-700));
+  box-shadow: var(--shadow-card);
 }
 
-/* Input styles */
+.card-dark:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ========================================
+   STYLES D'INPUTS
+   ======================================== */
 .input {
-  @apply w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300;
+  @apply w-full px-4 py-3 rounded-xl focus:outline-none transition-all duration-300;
+  border: 1px solid rgb(var(--color-gray-200));
+  background-color: rgb(var(--color-white));
+}
+
+.input:focus {
+  --tw-ring-color: rgb(var(--color-primary-500));
+  @apply ring-2 border-transparent;
 }
 
 .input-dark {
-  @apply w-full px-4 py-3 border border-gray-600 bg-gray-700 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent;
+  @apply w-full px-4 py-3 rounded-xl focus:outline-none;
+  border: 1px solid rgb(var(--color-gray-600));
+  background-color: rgb(var(--color-gray-700));
+  color: rgb(var(--color-white));
 }
 
-/* Layout helpers */
+.input-dark:focus {
+  --tw-ring-color: rgb(var(--color-primary-500));
+  @apply ring-2 border-transparent;
+}
+
+/* ========================================
+   HELPERS DE LAYOUT
+   ======================================== */
 .container-custom {
   @apply container mx-auto px-6 lg:px-12;
 }
@@ -282,7 +624,9 @@ body {
   @apply py-16 lg:py-24;
 }
 
-/* Text styles */
+/* ========================================
+   STYLES DE TEXTE
+   ======================================== */
 .heading-1 {
   @apply text-4xl lg:text-6xl font-bold leading-tight;
   font-family: 'Playfair Display', serif;
@@ -305,7 +649,9 @@ body {
   @apply text-sm leading-relaxed;
 }
 
-/* Responsive helpers */
+/* ========================================
+   HELPERS RESPONSIVE
+   ======================================== */
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -315,60 +661,32 @@ body {
   display: none;
 }
 
-/* Focus states */
+/* ========================================
+   ÉTATS DE FOCUS
+   ======================================== */
 .focus-ring {
-  @apply focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-white;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  --tw-ring-color: rgb(var(--color-primary-500));
+  --tw-ring-offset-color: rgb(var(--color-white));
 }
 
 .focus-ring-dark {
-  @apply focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-gray-800;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  --tw-ring-color: rgb(var(--color-primary-500));
+  --tw-ring-offset-color: rgb(var(--color-gray-800));
 }
 
-/* Loading states */
+/* ========================================
+   ÉTATS DE CHARGEMENT
+   ======================================== */
 .loading-dots::after {
   content: '';
   animation: loading-dots 1.5s infinite;
 }
 
-@keyframes loading-dots {
-  0%, 20% { content: ''; }
-  40% { content: '.'; }
-  60% { content: '..'; }
-  80%, 100% { content: '...'; }
-}
-
-/* Print styles */
-@media print {
-  .no-print {
-    display: none !important;
-  }
-  
-  body {
-    background: white !important;
-    color: black !important;
-  }
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* High contrast mode */
-@media (prefers-contrast: high) {
-  :root {
-    --color-border: 0 0 0;
-    --color-muted: 128 128 128;
-  }
-}
-
-/* Custom utilities pour Be Boutique */
+/* ========================================
+   UTILITIES BE BOUTIQUE
+   ======================================== */
 .text-be-primary {
   color: rgb(var(--color-primary-500));
 }
@@ -393,11 +711,48 @@ body {
   box-shadow: var(--shadow-large);
 }
 
-/* Animations spécifiques Be Boutique */
+/* ========================================
+   ANIMATIONS BE BOUTIQUE
+   ======================================== */
 .be-float {
   animation: float 4s ease-in-out infinite;
 }
 
 .be-glow {
   animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* ========================================
+   MEDIA QUERIES
+   ======================================== */
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: rgb(var(--color-white)) !important;
+    color: rgb(var(--color-black)) !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: var(--color-black);
+    --color-muted: 128 128 128;
+  }
 }

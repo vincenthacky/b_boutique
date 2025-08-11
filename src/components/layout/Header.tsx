@@ -2,6 +2,8 @@
 import { memo, useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+
+import logo_orange from '@/assets/Logo_orange.png'
 import { 
   Search, 
   ShoppingCart, 
@@ -74,15 +76,17 @@ const Header = memo(() => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
+           {/* Logo */}
             <Link to="/" className="flex-shrink-0">
-              <motion.div 
-                className="text-2xl font-bold bg-gradient-to-r from-amber-600 to-amber-400 bg-clip-text text-transparent"
+              <motion.img
+                src={logo_orange}
+                alt="Logo Be Boutique"
+                className="h-40 w-auto" // ajuste la taille si nécessaire
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                Be Boutique
-              </motion.div>
+              />
             </Link>
+
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8">
