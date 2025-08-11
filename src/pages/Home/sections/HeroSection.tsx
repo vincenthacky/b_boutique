@@ -1,12 +1,21 @@
+import React from 'react'
 import { motion, useTransform } from 'framer-motion'
-
-import { ShoppingBag, Users, Gift, CreditCard, Truck, Headphones, Star, Heart, ArrowRight, Play, Crown,Shield } from 'lucide-react'
+import { ShoppingBag, Users, Gift, CreditCard, Truck, Headphones, Star, Heart, ArrowRight, Play, Crown, Shield } from 'lucide-react'
 
 export const HeroSection = ({ 
-  heroData,
-  scrollY 
+  heroData = {
+    title: { line1: "BE", line2: "BOUTIQUE" },
+    subtitle: "Découvrez l'élégance africaine authentique avec nos créations uniques",
+    preTitle: "L'AFRIQUE SE RÉVÈLE",
+    ctaButtons: [
+      { text: "Explorer", icon: ShoppingBag, variant: "primary", link: "#" },
+      { text: "Regarder", icon: Play, variant: "secondary", link: "#" }
+    ],
+    backgroundImage: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+  },
+  scrollY = { current: 0 }
 }: { 
-  heroData: {
+  heroData?: {
     title: { line1: string, line2: string }
     subtitle: string
     preTitle: string
@@ -18,81 +27,105 @@ export const HeroSection = ({
     }>
     backgroundImage: string
   }
-  scrollY: any
+  scrollY?: any
 }) => {
 
-  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.3])
-  const heroScale = useTransform(scrollY, [0, 300], [1, 1.1])
+  const heroOpacity = scrollY?.current ? useTransform(scrollY, [1, 0.3], [1, 0.3]) : { current: 1 }
+  const heroScale = scrollY?.current ? useTransform(scrollY, [1, 1.1], [1, 1.1]) : { current: 1 }
+
+  // Configuration optimisée pour mobile avec des opacités ajustées
+  const darkOverlays = {
+    mainBackground: 'from-gray-900 via-gray-800 to-black',
+    imageOpacity: 0.2, // Légèrement augmentée pour mobile
+    blackOverlay: 0.5, // Augmentée pour meilleur contraste mobile
+    gradientOverlay: 'from-gray-900/70 via-transparent to-gray-900/40',
+    buttonBackdrop: 'bg-white/20',
+    scrollIndicator: 'bg-black/20'
+  }
 
   return (
-    <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Arrière-plan principal sombre */}
+      <div className={`absolute inset-0 bg-gradient-to-br ${darkOverlays.mainBackground}`}></div>
+      
+      {/* Image de fond optimisée pour mobile */}
       <motion.div 
         className="absolute inset-0 w-full h-full"
-        style={{ scale: heroScale, opacity: heroOpacity }}
+        style={{ 
+          scale: heroScale, 
+          opacity: heroOpacity * darkOverlays.imageOpacity
+        }}
       >
         <img
           src={heroData.backgroundImage}
           alt="Be Boutique - L'Afrique se révèle"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center mix-blend-overlay"
+          loading="eager"
         />
-        <div className="absolute inset-0" style={{ background: 'var(--hero-overlay-primary)' }}></div>
-        <div className="absolute inset-0" style={{ background: 'var(--hero-overlay-secondary)' }}></div>
+        <div 
+          className="absolute inset-0"
+          style={{ backgroundColor: `rgba(0, 0, 0, ${darkOverlays.blackOverlay})` }}
+        ></div>
+        <div className={`absolute inset-0 bg-gradient-to-t ${darkOverlays.gradientOverlay}`}></div>
       </motion.div>
 
+      {/* Effets de lumière optimisés pour mobile */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute top-20 left-10 w-64 h-64 rounded-full blur-3xl"
-          style={{ background: 'linear-gradient(to bottom right, var(--hero-bubble-amber), var(--hero-bubble-orange))' }}
-          animate={{ x: [0, 100, 0], y: [0, -50, 0] }}
+          className="absolute top-10 left-5 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full blur-2xl sm:blur-3xl opacity-20 sm:opacity-30"
+          style={{ background: 'linear-gradient(to bottom right, rgb(251, 191, 36, 0.3), rgb(249, 115, 22, 0.2))' }}
+          animate={{ x: [0, 50, 0], y: [0, -25, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-20 right-10 w-96 h-96 rounded-full blur-3xl"
-          style={{ background: 'linear-gradient(to bottom right, var(--hero-bubble-fuchsia), var(--hero-bubble-pink))' }}
-          animate={{ x: [0, -100, 0], y: [0, 50, 0] }}
+          className="absolute bottom-10 right-5 w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-full blur-2xl sm:blur-3xl opacity-15 sm:opacity-20"
+          style={{ background: 'linear-gradient(to bottom right, rgb(217, 70, 239, 0.2), rgb(236, 72, 153, 0.2))' }}
+          animate={{ x: [0, -50, 0], y: [0, 25, 0] }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
-      <div className="relative z-10 text-center w-full max-w-5xl mx-auto px-4">
+      {/* Contenu principal avec responsive amélioré */}
+      <div className="relative z-10 text-center w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: "easeOut" }}>
+          
+          {/* Pré-titre responsive */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex items-center justify-center gap-4 mb-6"
+            className="flex items-center justify-center gap-2 sm:gap-4 mb-4 sm:mb-6"
           >
-            <div className="h-px w-20" style={{ background: 'var(--hero-divider-gradient)' }}></div>
-            <span className="text-amber-400 font-medium tracking-widest text-sm uppercase">
+            <div className="h-px w-8 sm:w-16 md:w-20 bg-gradient-to-r from-transparent to-amber-400"></div>
+            <span className="text-amber-400 font-medium tracking-wider sm:tracking-widest text-xs sm:text-sm uppercase whitespace-nowrap">
               {heroData.preTitle}
             </span>
-            <div className="h-px w-20" style={{ background: 'linear-gradient(to left, transparent, rgb(251, 191, 36))' }}></div>
+            <div className="h-px w-8 sm:w-16 md:w-20 bg-gradient-to-l from-transparent to-amber-400"></div>
           </motion.div>
 
+          {/* Titre principal ultra-responsive */}
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-8xl font-bold mb-8 leading-tight"
-            style={{ color: 'rgb(var(--hero-text-white))' }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight text-white"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             {heroData.title.line1}
             <br />
-            <span className="inline-flex items-center gap-4 bg-clip-text text-transparent"
-              style={{ background: 'var(--hero-title-gradient)', WebkitBackgroundClip: 'text' }}>
+            <span className="inline-flex items-center justify-center gap-2 sm:gap-3 md:gap-4 bg-gradient-to-r from-amber-400 via-yellow-500 to-orange-500 bg-clip-text text-transparent">
               {heroData.title.line2}
               <motion.div
                 animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.1, 1] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                <Crown className="text-amber-400 w-12 h-12 md:w-16 md:h-16" />
+                <Crown className="text-amber-400 w-6 h-6 sm:w-8 sm:h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16" />
               </motion.div>
             </span>
           </motion.h1>
           
+          {/* Sous-titre responsive avec meilleure lisibilité mobile */}
           <motion.p
-            className="text-xl md:text-2xl lg:text-3xl mb-12 leading-relaxed max-w-4xl mx-auto"
-            style={{ color: 'rgb(var(--hero-text-white))' }}
+            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-6 sm:mb-8 md:mb-12 leading-relaxed max-w-sm sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto text-gray-100 px-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
@@ -100,8 +133,9 @@ export const HeroSection = ({
             {heroData.subtitle}
           </motion.p>
 
+          {/* Boutons CTA optimisés pour mobile */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-10 md:mb-12 px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.6 }}
@@ -111,60 +145,58 @@ export const HeroSection = ({
               return (
                 <motion.button
                   key={index}
-                  className={`group px-8 py-4 ${
+                  className={`group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 ${
                     button.variant === 'primary' 
-                      ? 'text-white shadow-2xl' 
-                      : 'backdrop-blur-md text-white border-2'
-                  } rounded-full font-bold transition-all duration-300 flex items-center gap-3 text-lg`}
-                  style={{
-                    background: button.variant === 'primary' 
-                      ? 'var(--hero-btn-primary-bg)' 
-                      : 'var(--hero-btn-secondary-bg)',
-                    borderColor: button.variant === 'secondary' ? 'var(--hero-btn-secondary-border)' : 'transparent',
-                    boxShadow: button.variant === 'primary' 
-                      ? '0 25px 50px -12px var(--hero-btn-primary-shadow)' 
-                      : 'none'
-                  }}
+                      ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-2xl shadow-amber-500/25' 
+                      : `backdrop-blur-md text-white border-2 border-amber-400/50 ${darkOverlays.buttonBackdrop}`
+                  } rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg hover:shadow-xl`}
                   whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span>{button.text}</span>
                   {button.variant === 'primary' && (
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
                   )}
                 </motion.button>
               )
             })}
           </motion.div>
 
+          {/* Indicateurs de confiance optimisés pour mobile */}
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto px-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.6 }}
           >
             {[
-              { id: 1, icon: Shield, text: 'Paiement 100% sécurisé', highlight: 'Sécurisé' },
-              { id: 2, icon: Truck, text: 'Livraison rapide 48-72h', highlight: '48-72h' },
-              { id: 3, icon: Heart, text: 'Satisfait ou remboursé 30j', highlight: '30 jours' },
-              { id: 4, icon: Users, text: 'Plus de 10,000 clients', highlight: '10,000+' }
+              { id: 1, icon: Shield, text: 'Paiement sécurisé', highlight: 'Sécurisé', shortText: 'Sécurisé' },
+              { id: 2, icon: Truck, text: 'Livraison 48-72h', highlight: '48-72h', shortText: '48-72h' },
+              { id: 3, icon: Heart, text: 'Satisfait 30j', highlight: '30j', shortText: '30 jours' },
+              { id: 4, icon: Users, text: '10,000+ clients', highlight: '10,000+', shortText: '10k+' }
             ].map((indicator, index) => {
               const Icon = indicator.icon
               return (
                 <motion.div
                   key={indicator.id}
-                  className="flex flex-col items-center gap-2"
-                  style={{ color: 'rgba(255, 255, 255, 0.8)' }}
+                  className="flex flex-col items-center gap-1 sm:gap-2 text-gray-200"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.3 + index * 0.1 }}
                 >
-                  <Icon className="w-6 h-6 text-amber-400" />
-                  <span className="text-xs text-center">
-                    <span className="font-bold text-amber-400">{indicator.highlight}</span>
-                    <br />
-                    {indicator.text.replace(indicator.highlight, '')}
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-amber-400" />
+                  <span className="text-xs sm:text-xs text-center leading-tight">
+                    <span className="font-bold text-amber-400 block sm:inline">
+                      {window.innerWidth < 640 ? indicator.shortText : indicator.highlight}
+                    </span>
+                    <span className="hidden sm:inline">
+                      <br className="sm:hidden" />
+                      {indicator.text.replace(indicator.highlight, '')}
+                    </span>
+                    <span className="sm:hidden block text-gray-400">
+                      {indicator.text.replace(indicator.highlight, '').trim()}
+                    </span>
                   </span>
                 </motion.div>
               )
@@ -173,23 +205,34 @@ export const HeroSection = ({
         </motion.div>
       </div>
 
+      {/* Indicateur de scroll responsive */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
+        className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block"
+        animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
-        <div className="w-7 h-12 border-2 rounded-full flex justify-center backdrop-blur-sm"
-          style={{ color: 'var(--hero-scroll-border)' }}>
+        <div className={`w-6 h-10 sm:w-7 sm:h-12 border-2 border-amber-400/50 rounded-full flex justify-center backdrop-blur-sm ${darkOverlays.scrollIndicator}`}>
           <motion.div
-            className="w-1.5 h-3 rounded-full mt-2"
-            style={{ backgroundColor: 'var(--hero-scroll-dot)' }}
-            animate={{ y: [0, 12, 0] }}
+            className="w-1 sm:w-1.5 h-2 sm:h-3 bg-amber-400 rounded-full mt-1.5 sm:mt-2"
+            animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           />
+        </div>
+      </motion.div>
+
+      {/* Version mobile de l'indicateur de scroll */}
+      <motion.div
+        className="absolute bottom-2 left-1/2 transform -translate-x-1/2 sm:hidden"
+        animate={{ opacity: [0.5, 1, 0.5] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <div className="text-amber-400 text-xs font-medium">
+          ↓ Faire défiler ↓
         </div>
       </motion.div>
     </section>
   )
 }
+
 HeroSection.displayName = 'HeroSection'
 export default HeroSection

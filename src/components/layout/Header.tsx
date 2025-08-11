@@ -234,14 +234,14 @@ const Header = memo(() => {
         <div className="px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link to="/" className="flex-shrink-0">
-              <motion.div 
-                className="text-xl font-bold bg-gradient-to-r from-amber-600 to-amber-400 bg-clip-text text-transparent"
+           <Link to="/" className="flex-shrink-0">
+              <motion.img
+                src={logo_orange}
+                alt="Logo Be Boutique"
+                className="h-40 w-auto" // ajuste la taille si nécessaire
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                Be Boutique
-              </motion.div>
+              />
             </Link>
 
             {/* Mobile Search and Menu */}
@@ -368,20 +368,7 @@ const Header = memo(() => {
             exit={{ opacity: 0, y: 100 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="px-4 py-6 space-y-4">
-              <Link
-                to="/categories"
-                className="block w-full text-left px-4 py-3 text-gray-700 hover:text-amber-600 hover:bg-amber-50/50 rounded-xl transition-all duration-200 font-medium"
-              >
-                Toutes les catégories
-              </Link>
-              <Link
-                to="/services"
-                className="block px-4 py-3 text-gray-700 hover:text-amber-600 hover:bg-amber-50/50 rounded-xl transition-all duration-200 font-medium"
-              >
-                Services
-              </Link>
-            </div>
+           
           </motion.div>
         )}
       </AnimatePresence>

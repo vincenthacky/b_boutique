@@ -41,6 +41,27 @@
   --timer-bg: var(--color-red-50);
   --timer-border: var(--color-red-200);
 
+  /* Timer overlay manquant */
+  --timer-bg-overlay: rgba(var(--color-error-500), 0.1);
+  
+  /* Variables animations Featured manquantes */
+  --featured-btn-hover-scale: 1.05;
+  --featured-btn-hover-y: -3px;
+  --featured-btn-tap-scale: 0.95;
+  --featured-arrow-translate: 8px;
+  
+  /* Variables animations sections manquantes */
+  --section-card-hover-y: -10px;
+  --section-card-hover-scale: 1.05;
+  --section-image-scale: 1.1;
+  --section-brand-hover-scale: 1.05;
+  --section-brand-hover-y: -5px;
+  
+  /* Variables pattern manquantes */
+  --testimonials-pattern-opacity: 0.05;
+  --categories-pattern-opacity: 0.05;
+  --categories-pattern-svg: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
 
   /* === COULEURS VIOLETTES === */
   --color-violet-50: 245 243 255;
@@ -331,6 +352,419 @@
   --gradient-secondary: linear-gradient(135deg, rgb(var(--color-secondary-500)) 0%, rgb(var(--color-secondary-600)) 100%);
   --gradient-hero: linear-gradient(135deg, rgba(var(--color-gray-900), 0.8) 0%, rgba(var(--color-black), 0.4) 100%);
 }
+
+/* ========================================
+   CLASSES CSS MANQUANTES CRITIQUES
+   ======================================== */
+
+/* Hero Section - Classes qui suivent automatiquement les changements de couleurs */
+.hero-overlay-primary {
+  background: var(--hero-overlay-primary);
+}
+
+.hero-overlay-secondary {
+  background: var(--hero-overlay-secondary);
+}
+
+.hero-bubble-amber {
+  background: linear-gradient(to bottom right, var(--hero-bubble-amber), var(--hero-bubble-orange));
+}
+
+.hero-bubble-fuchsia {
+  background: linear-gradient(to bottom right, var(--hero-bubble-fuchsia), var(--hero-bubble-pink));
+}
+
+.hero-btn-primary {
+  background: var(--hero-btn-primary-bg);
+  color: var(--hero-text-white);
+  box-shadow: 0 25px 50px -12px var(--hero-btn-primary-shadow);
+}
+
+.hero-btn-secondary {
+  background: var(--hero-btn-secondary-bg);
+  border: 1px solid var(--hero-btn-secondary-border);
+  color: var(--hero-text-white);
+}
+
+.hero-btn-secondary:hover {
+  background: var(--hero-btn-secondary-hover);
+}
+
+.hero-scroll-border {
+  border-color: var(--hero-scroll-border);
+}
+
+.hero-scroll-dot {
+  background-color: var(--hero-scroll-dot);
+}
+
+/* Featured Section */
+.featured-bg {
+  background: var(--featured-bg-gradient);
+}
+
+.featured-btn-primary {
+  background: var(--featured-btn-primary-bg);
+  color: var(--featured-btn-text);
+  box-shadow: var(--featured-btn-primary-shadow);
+}
+
+.featured-btn-primary:hover {
+  box-shadow: 0 25px 50px -12px var(--featured-btn-primary-shadow-hover);
+}
+
+/* Testimonials Section */
+.testimonials-bg {
+  background: var(--testimonials-bg-gradient);
+}
+
+.testimonials-pattern {
+  background-image: var(--testimonials-pattern-bg);
+}
+
+.testimonials-card {
+  background: var(--testimonials-card-bg);
+  border: 1px solid var(--testimonials-card-border);
+  box-shadow: var(--testimonials-card-shadow);
+}
+
+.testimonials-avatar-border {
+  border-color: var(--testimonials-avatar-border);
+}
+
+.testimonials-verified-bg {
+  background: var(--testimonials-verified-bg);
+}
+
+.testimonials-star {
+  color: var(--testimonials-star-color);
+}
+
+.testimonials-text-primary {
+  color: var(--testimonials-text-primary);
+}
+
+.testimonials-text-secondary {
+  color: var(--testimonials-text-secondary);
+}
+
+.testimonials-text-accent {
+  color: var(--testimonials-text-accent);
+}
+
+.testimonials-dot-active {
+  background: var(--testimonials-dot-active);
+}
+
+.testimonials-dot-inactive {
+  background: var(--testimonials-dot-inactive);
+}
+
+.testimonials-dot-hover:hover {
+  background: var(--testimonials-dot-hover);
+}
+
+/* Services Section */
+.services-bg {
+  background: var(--services-bg-gradient);
+}
+
+.services-card {
+  background: var(--services-card-bg);
+  border: 1px solid var(--services-card-border);
+  box-shadow: var(--services-card-shadow);
+}
+
+.services-text-primary {
+  color: var(--services-text-primary);
+}
+
+.services-text-secondary {
+  color: var(--services-text-secondary);
+}
+
+.services-text-hover:hover {
+  color: var(--services-text-hover);
+}
+
+.services-icon-text {
+  color: var(--services-icon-text);
+}
+
+/* Newsletter Section */
+.newsletter-bg {
+  background: var(--newsletter-bg-gradient);
+}
+
+.newsletter-icon-bg {
+  background: var(--newsletter-icon-bg);
+}
+
+/* Collections Section */
+.collections-bg {
+  background: var(--collections-bg-gradient);
+}
+
+.collections-card {
+  background: var(--collections-card-bg);
+  border: 1px solid var(--collections-card-border);
+  box-shadow: var(--collections-card-shadow);
+}
+
+.collections-card:hover {
+  box-shadow: var(--collections-card-shadow-hover);
+}
+
+.collections-btn-primary {
+  background: var(--collections-btn-primary-bg);
+  box-shadow: var(--collections-btn-primary-shadow);
+}
+
+.collections-btn-primary:hover {
+  box-shadow: 0 25px 50px -12px var(--collections-btn-primary-shadow-hover);
+}
+
+.collections-badge {
+  background: var(--collections-badge-bg);
+}
+
+.collections-overlay {
+  background: var(--collections-overlay-bg);
+}
+
+.collections-overlay:hover {
+  background: var(--collections-overlay-hover-bg);
+}
+
+.collections-text-primary {
+  color: var(--collections-text-primary);
+}
+
+.collections-text-secondary {
+  color: var(--collections-text-secondary);
+}
+
+.collections-text-tertiary {
+  color: var(--collections-text-tertiary);
+}
+
+/* Brands Section */
+.brands-bg {
+  background: var(--brands-bg-gradient);
+}
+
+.brands-card {
+  background: var(--brands-card-bg);
+  border: 1px solid var(--brands-card-border);
+  box-shadow: var(--brands-card-shadow);
+}
+
+.brands-card:hover {
+  box-shadow: var(--brands-card-shadow-hover);
+}
+
+.brands-text-primary {
+  color: var(--brands-text-primary);
+}
+
+.brands-text-secondary {
+  color: var(--brands-text-secondary);
+}
+
+.brands-text-hover:hover {
+  color: var(--brands-text-hover);
+}
+
+.brands-overlay {
+  background: var(--brands-overlay-gradient);
+}
+
+.brands-overlay:hover {
+  background: var(--brands-overlay-hover-gradient);
+}
+
+.brands-stats-icon {
+  color: var(--brands-stats-icon-color);
+}
+
+.brands-stats-text-primary {
+  color: var(--brands-stats-text-primary);
+}
+
+.brands-stats-text-secondary {
+  color: var(--brands-stats-text-secondary);
+}
+
+/* Final CTA Section */
+.final-cta-bg {
+  background: var(--final-cta-bg-gradient);
+}
+
+.final-cta-badge {
+  background: var(--final-cta-badge-bg);
+}
+
+.final-cta-text-primary {
+  color: var(--final-cta-text-primary);
+}
+
+.final-cta-text-secondary {
+  color: var(--final-cta-text-secondary);
+}
+
+.final-cta-text-tertiary {
+  color: var(--final-cta-text-tertiary);
+}
+
+.final-cta-btn-primary {
+  background: var(--final-cta-btn-primary-bg);
+  color: var(--final-cta-btn-primary-text);
+  box-shadow: 0 25px 50px -12px var(--final-cta-btn-primary-shadow);
+}
+
+.final-cta-btn-secondary {
+  background: var(--final-cta-btn-secondary-bg);
+  border: 1px solid var(--final-cta-btn-secondary-border);
+  color: var(--final-cta-btn-secondary-text);
+}
+
+.final-cta-btn-secondary:hover {
+  background: var(--final-cta-btn-secondary-hover);
+}
+
+.final-cta-stats-card {
+  background: var(--final-cta-stats-card-bg);
+  border: 1px solid var(--final-cta-stats-card-border);
+}
+
+.final-cta-stats-card:hover {
+  background: var(--final-cta-stats-card-hover);
+}
+
+.final-cta-stats-icon {
+  color: var(--final-cta-stats-icon-color);
+}
+
+.final-cta-stats-number {
+  color: var(--final-cta-stats-number-color);
+}
+
+.final-cta-stats-label {
+  color: var(--final-cta-stats-label-color);
+}
+
+/* Categories Section */
+.categories-bg {
+  background: var(--categories-bg-gradient);
+}
+
+.categories-card {
+  border: 1px solid var(--categories-card-border);
+  background: var(--categories-card-backdrop);
+  backdrop-filter: blur(20px);
+}
+
+.categories-card:hover {
+  background: var(--categories-card-hover-overlay);
+  box-shadow: var(--categories-card-shadow-hover);
+}
+
+.categories-text-primary {
+  color: var(--categories-text-primary);
+}
+
+.categories-text-secondary {
+  color: var(--categories-text-secondary);
+}
+
+.categories-text-tertiary {
+  color: var(--categories-text-tertiary);
+}
+
+.categories-arrow {
+  color: var(--categories-arrow-color);
+}
+
+/* New Products Section */
+.new-products-bg {
+  background: var(--new-products-bg);
+}
+
+.new-products-btn {
+  background: var(--new-products-btn-bg);
+  color: var(--new-products-btn-text);
+  box-shadow: var(--new-products-btn-shadow);
+}
+
+.new-products-btn:hover {
+  box-shadow: 0 25px 50px -12px var(--new-products-btn-shadow-hover);
+}
+
+/* Timer Component */
+.timer-bg {
+  background: var(--timer-bg);
+  border: 1px solid var(--timer-border);
+}
+
+.timer-bg-overlay {
+  background: var(--timer-bg-overlay);
+}
+
+/* ========================================
+   THÈMES ALTERNATIFS AVEC PROPAGATION
+   ======================================== */
+
+/* Thème coloré - Changement automatique de TOUTES les dépendances */
+[data-theme="colorful"] {
+  /* Changement des couleurs de base */
+  --color-primary-500: 236 72 153;  /* Rose vif */
+  --color-primary-400: 244 114 182; /* Rose moyen */
+  --color-primary-600: 219 39 119;  /* Rose foncé */
+  --color-primary-700: 190 24 93;   /* Rose très foncé */
+  --color-secondary-500: 124 58 237; /* Violet */
+  --color-secondary-600: 109 40 217; /* Violet foncé */
+}
+
+/* Exemple de thème bleu-vert */
+[data-theme="ocean"] {
+  --color-primary-500: 59 130 246;   /* Bleu */
+  --color-primary-400: 96 165 250;   /* Bleu clair */
+  --color-primary-600: 37 99 235;    /* Bleu foncé */
+  --color-primary-700: 29 78 216;    /* Bleu très foncé */
+  --color-secondary-500: 16 185 129; /* Vert émeraude */
+  --color-secondary-600: 5 150 105;  /* Vert foncé */
+}
+
+/* ========================================
+   CLASSES POUR CHANGEMENT RAPIDE DE THÈME
+   ======================================== */
+
+/* Classe utilitaire pour appliquer rapidement un thème */
+.theme-primary-orange {
+  --color-primary-500: 210 122 2;
+  --color-secondary-500: 232 176 178;
+}
+
+.theme-primary-pink {
+  --color-primary-500: 236 72 153;
+  --color-secondary-500: 124 58 237;
+}
+
+.theme-primary-blue {
+  --color-primary-500: 59 130 246;
+  --color-secondary-500: 16 185 129;
+}
+
+.theme-primary-green {
+  --color-primary-500: 34 197 94;
+  --color-secondary-500: 59 130 246;
+}
+
+
+
+
+
+
 
 /* ========================================
    THÈMES ALTERNATIFS
