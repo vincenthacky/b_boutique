@@ -110,41 +110,52 @@ const Header = memo(() => {
                 <AnimatePresence>
                   {isDropdownOpen && (
                     <motion.div
-                      className="absolute top-full left-0 mt-2 w-96 bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden"
-                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      className="absolute top-full left-0 mt-2 w-[550px] bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden"
+                      initial={{ opacity: 0, y: -10, scale: 0.98 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.98 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <div className="p-6">
-                        <div className="grid grid-cols-3 gap-6">
-                          {Object.entries(categories).map(([mainCategory, subcategories]) => (
-                            <div key={mainCategory} className="space-y-3">
-                              <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wider">
-                                {mainCategory}
-                              </h3>
-                              <div className="space-y-2">
-                                {Object.entries(subcategories).map(([subCategory, items]) => (
-                                  <div key={subCategory} className="space-y-1">
-                                    <h4 className="font-medium text-gray-700 text-sm">
-                                      {subCategory}
-                                    </h4>
+                      <div className="p-8 grid grid-cols-3 gap-x-8 gap-y-6">
+                        {Object.entries(categories).map(([mainCategory, subcategories]) => (
+                          <div key={mainCategory} className="border-r border-gray-100 last:border-none pr-4">
+                            <Link 
+                              to={`/categories/${mainCategory.toLowerCase()}`}
+                              className="font-extrabold text-lg text-amber-600 uppercase tracking-wide pb-2 mb-4 border-b border-amber-200 block hover:text-amber-800 transition-colors"
+                            >
+                              {mainCategory}
+                            </Link>
+                            <div className="space-y-4 mt-4">
+                              {Object.entries(subcategories).map(([subCategory, items]) => (
+                                <div key={subCategory} className="space-y-1">
+                                  <Link 
+                                    to={`/categories/${mainCategory.toLowerCase()}/${subCategory.toLowerCase()}`}
+                                    className="font-bold text-gray-900 text-sm block hover:text-amber-600 transition-colors"
+                                  >
+                                    {subCategory}
+                                  </Link>
+                                  <ul className="space-y-1">
                                     {items.map((item) => (
-                                      <motion.a
+                                      <motion.li
                                         key={item}
-                                        href="#"
-                                        className="block text-sm text-gray-600 hover:text-amber-600 hover:pl-2 transition-all duration-200"
-                                        whileHover={{ x: 4 }}
+                                        initial={{ x: -10, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{ duration: 0.2, delay: 0.1 }}
                                       >
-                                        {item}
-                                      </motion.a>
+                                        <Link
+                                          to={`/categories/${mainCategory.toLowerCase()}/${subCategory.toLowerCase()}/${item.toLowerCase()}`}
+                                          className="block text-sm text-gray-600 hover:text-amber-600 hover:font-semibold transition-all duration-200"
+                                        >
+                                          {item}
+                                        </Link>
+                                      </motion.li>
                                     ))}
-                                  </div>
-                                ))}
-                              </div>
+                                  </ul>
+                                </div>
+                              ))}
                             </div>
-                          ))}
-                        </div>
+                          </div>
+                        ))}
                       </div>
                     </motion.div>
                   )}
