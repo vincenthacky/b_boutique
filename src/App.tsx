@@ -9,6 +9,8 @@ import Loader from './components/common/Loader'
 
 // Lazy loading des pages pour performance optimale
 const HomePage = lazy(() => import('./pages/Home/HomePage'))
+const BrandPartnerPage = lazy(() => import('./pages/BrandPartner/BrandPartnerPage'));
+
 //const ProductsPage = lazy(() => import('./pages/Products/ProductsPage'))
 //const ProductDetailPage = lazy(() => import('./pages/ProductDetail/ProductDetailPage'))
 //const CartPage = lazy(() => import('./pages/Cart/CartPage'))
@@ -24,6 +26,7 @@ const App = memo(() => {
           <Suspense fallback={<Loader />}>
             <Routes>
               <Route path="/" element={<HomePage />} />
+               <Route path="/brand/:id" element={<BrandPartnerPage />} />
               {/*<Route path="/products" element={<ProductsPage />} />
               <Route path="/product/:id" element={<ProductDetailPage />} />
               <Route path="/cart" element={<CartPage />} />

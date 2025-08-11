@@ -3,6 +3,7 @@ import { memo, useState, useEffect,lazy,Suspense } from 'react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import bannerImage from '@/assets/banner-redi.jpg'
 import { useTheme } from '../../components/theme/ThemeProvider'
+import { Link } from 'react-router-dom';
 import {
   ShoppingBag,
   Users,
@@ -1053,9 +1054,10 @@ const HomePage = memo(() => {
       </section>
 
       {/* Brand Partners Section */}
+      {/* Brand Partners Section */}
       <section className="py-12 md:py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <SectionTitle
+           <SectionTitle
             preTitle="PARTENAIRES DE CONFIANCE"
             title="Nos Marques Partenaires"
             subtitle="Une sélection rigoureuse d'ateliers et créateurs"
@@ -1065,58 +1067,34 @@ const HomePage = memo(() => {
             {brandsData.map((brand, index) => (
               <motion.div
                 key={brand.id}
-                className="group relative"
+                className="group relative cursor-pointer"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="bg-gray-50 rounded-xl p-4 md:p-6 shadow-sm transition-all duration-300 border border-gray-100 overflow-hidden">
-                  <div className="relative">
-                    <img
-                      src={brand.logo}
-                      alt={brand.name}
-                      className="w-full h-16 object-contain mb-2 filter grayscale group-hover:grayscale-0 transition-all duration-500"
-                    />
-                    <h3 className="font-bold text-gray-900 text-center text-sm mb-1 group-hover:text-amber-500 transition-colors">
-                      {brand.name}
-                    </h3>
-                    <p className="text-xs text-gray-500 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {brand.specialty}
-                    </p>
+                {/* Modifié : le premier lien redirige vers une page spécifique du partenaire */}
+                <Link to={`/brand/${brand.id}`}>
+                  <div className="bg-gray-50 rounded-xl p-4 md:p-6 shadow-sm transition-all duration-300 border border-gray-100 overflow-hidden hover:shadow-lg hover:border-amber-500">
+                    <div className="relative">
+                      <img
+                        src={brand.logo}
+                        alt={brand.name}
+                        className="w-full h-16 object-contain mb-2 filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                      />
+                      <h3 className="font-bold text-gray-900 text-center text-sm mb-1 group-hover:text-amber-500 transition-colors">
+                        {brand.name}
+                      </h3>
+                      <p className="text-xs text-gray-500 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {brand.specialty}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>
-
-          {/* Partner Stats */}
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6 }}
-          >
-            {partnerStatsData.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div
-                  key={stat.id}
-                  className="text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.7 + index * 0.1 }}
-                >
-                  <Icon className="w-6 h-6 text-amber-500 mx-auto mb-2" />
-                  <div className="text-xl font-bold text-gray-900">{stat.number}</div>
-                  <div className="text-xs text-gray-500">{stat.label}</div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
         </div>
       </section>
 
