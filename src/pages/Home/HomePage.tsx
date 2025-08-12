@@ -317,36 +317,109 @@ const newProductsData = [
 ]
 
 // Collections Data
+// Collections Data - Version mise à jour pour HomePage.tsx
+// Remplacer collectionsData existant par cette version
+
 const collectionsData = [
   {
     id: 1,
     title: 'Heritage Ivoirienne',
+    slug: 'heritage-ivoirienne', // Ajouté pour URL friendly
     description: 'Une célébration de nos traditions ancestrales revisitées avec modernité',
+    shortDescription: 'Traditions ancestrales et modernité', // Version courte pour cards
     image: 'https://images.unsplash.com/photo-1554412933-514a83d2f3c8?w=1000&h=1200&fit=crop&q=90',
     creator: 'Atelier Royal Akan',
     itemCount: 12,
     color: 'from-amber-600 to-orange-500',
-    link: '/collections/heritage-ivoirienne'
+    link: '/collections/heritage-ivoirienne', // URL de la collection
+    status: 'active', // active, coming-soon, sold-out
+    featured: true, // Collection mise en avant
+    launchDate: '2024-01-15',
+    averagePrice: 45000, // Prix moyen des produits
+    themes: ['Tradition', 'Royauté', 'Spiritualité'],
+    totalSales: 234,
+    rating: 4.9,
+    reviewsCount: 127
   },
   {
     id: 2,
     title: 'Modernité Africaine',
+    slug: 'modernite-africaine',
     description: 'Des designs contemporains inspirés des motifs traditionnels',
+    shortDescription: 'Design contemporain africain',
     image: 'https://images.unsplash.com/photo-1551232864-3f0890e580d9?w=1000&h=1200&fit=crop&q=90',
     creator: 'Studio Abidjan',
     itemCount: 8,
     color: 'from-purple-600 to-pink-500',
-    link: '/collections/modernite-africaine'
+    link: '/collections/modernite-africaine',
+    status: 'active',
+    featured: true,
+    launchDate: '2024-02-01',
+    averagePrice: 32000,
+    themes: ['Modernité', 'Innovation', 'Fusion'],
+    totalSales: 156,
+    rating: 4.8,
+    reviewsCount: 89
   },
   {
     id: 3,
     title: 'Art Sacré',
+    slug: 'art-sacre',
     description: 'Pièces uniques inspirées par les rituels et croyances traditionnelles',
+    shortDescription: 'Spiritualité et art traditionnel',
     image: 'https://images.unsplash.com/photo-1479064555552-3ef4979f8908?w=1000&h=1200&fit=crop&q=90',
     creator: 'Maître Koffi',
     itemCount: 5,
     color: 'from-emerald-600 to-teal-500',
-    link: '/collections/art-sacre'
+    link: '/collections/art-sacre',
+    status: 'active',
+    featured: false,
+    launchDate: '2024-01-20',
+    averagePrice: 68000,
+    themes: ['Spiritualité', 'Rituel', 'Ancestral'],
+    totalSales: 89,
+    rating: 5.0,
+    reviewsCount: 45
+  },
+  {
+    id: 4,
+    title: 'Mode Urbaine',
+    slug: 'mode-urbaine',
+    description: 'L\'élégance africaine adaptée à la vie moderne et urbaine',
+    shortDescription: 'Style urbain africain moderne',
+    image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=1000&h=1200&fit=crop&q=90',
+    creator: 'Afro-Futuriste',
+    itemCount: 15,
+    color: 'from-blue-600 to-cyan-500',
+    link: '/collections/mode-urbaine',
+    status: 'coming-soon',
+    featured: true,
+    launchDate: '2024-03-15',
+    averagePrice: 28000,
+    themes: ['Urbain', 'Moderne', 'Jeunesse'],
+    totalSales: 0,
+    rating: 0,
+    reviewsCount: 0
+  },
+  {
+    id: 5,
+    title: 'Bijoux Royaux',
+    slug: 'bijoux-royaux',
+    description: 'Collection de bijoux inspirée des parures des cours royales africaines',
+    shortDescription: 'Parures royales authentiques',
+    image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1000&h=1200&fit=crop&q=90',
+    creator: 'Maison des Orfèvres',
+    itemCount: 7,
+    color: 'from-yellow-600 to-amber-500',
+    link: '/collections/bijoux-royaux',
+    status: 'active',
+    featured: false,
+    launchDate: '2024-01-10',
+    averagePrice: 85000,
+    themes: ['Royauté', 'Luxe', 'Prestige'],
+    totalSales: 67,
+    rating: 4.9,
+    reviewsCount: 34
   }
 ]
 
@@ -991,6 +1064,7 @@ const HomePage = memo(() => {
                 transition={{ duration: 0.6, delay: index * 0.15 }}
                 whileTap={{ scale: 0.98 }}
               >
+               <Link to={`/collections/${collection.id}`}>
                 <div className="relative bg-white rounded-2xl overflow-hidden shadow-md transition-all duration-500 border border-gray-100">
                   <div className="aspect-[4/5] overflow-hidden relative">
                     <img
@@ -1031,6 +1105,8 @@ const HomePage = memo(() => {
                     </div>
                   </div>
                 </div>
+              </Link>
+
               </motion.div>
             ))}
           </div>

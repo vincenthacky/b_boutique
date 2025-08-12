@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion, useTransform } from 'framer-motion'
+import { Link } from 'react-router-dom';
 import { ShoppingBag, Users, Gift, CreditCard, Truck, Headphones, Star, Heart, ArrowRight, Play, Crown, Shield } from 'lucide-react'
 
 export const HeroSection = ({ 
@@ -143,6 +144,9 @@ export const HeroSection = ({
             {heroData.ctaButtons.map((button, index) => {
               const Icon = button.icon
               return (
+                <Link to={button.link} key={index}> 
+
+
                 <motion.button
                   key={index}
                   className={`group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 ${
@@ -159,6 +163,8 @@ export const HeroSection = ({
                     <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
                   )}
                 </motion.button>
+
+                 </Link> // <-- Close
               )
             })}
           </motion.div>
