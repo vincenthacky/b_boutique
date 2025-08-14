@@ -12,6 +12,10 @@ const HomePage = lazy(() => import('./pages/Home/HomePage'))
 const BrandPartnerPage = lazy(() => import('./pages/BrandPartner/BrandPartnerPage'));
 const AboutPage = lazy(() => import('./pages/about/AboutePage'));
 const CollectionPage = lazy(() => import('./pages/collection/CollectionPage'));
+const FavoritesPage = lazy(() => import('./pages/favorites/favoritesPage'));
+const CartPage = lazy(() => import('./pages/Cart/CartPage'));
+const ServicesPage = lazy(() => import('./pages/Services/ServicesPage'));
+const AccountPage = lazy(() => import('./pages/Account/account'));
 
 //const ProductsPage = lazy(() => import('./pages/Products/ProductsPage'))
 //const ProductDetailPage = lazy(() => import('./pages/ProductDetail/ProductDetailPage'))
@@ -29,7 +33,15 @@ const App = memo(() => {
             <Routes>
               <Route path="/" element={<HomePage />} />
                <Route path="/brand/:id" element={<BrandPartnerPage />} />
-                <Route path="/about" element={<AboutPage />} />
+               <Route path="/about" element={<AboutPage />} />
+               <Route path="/about" element={<AboutPage />} />
+               <Route path="/favorites" element={<FavoritesPage />} /> {/* Page des favoris */}
+               <Route path="/cart" element={<CartPage />} /> {/* Page du panier */}
+                <Route path="/services" element={<ServicesPage />} /> {/* Page des services */}
+              <Route path="/account" element={<AccountPage />} /> {/* Page du compte */}
+
+               
+
               {/*<Route path="/products" element={<ProductsPage />} />
               <Route path="/product/:id" element={<ProductDetailPage />} />
               <Route path="/cart" element={<CartPage />} />

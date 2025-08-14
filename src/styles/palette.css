@@ -3,6 +3,36 @@
    Sophistication et élégance premium
 ======================================== */
 :root {
+
+  /* === COULEURS PRINCIPALES - ORANGE (#d27a02) === */
+--color-primary-50: 255 249 235;   /* Très clair */
+--color-primary-100: 254 240 205;  /* Clair */
+--color-primary-200: 253 220 160;  /* Pastel */
+--color-primary-300: 252 191 102;  /* Chaud doux */
+--color-primary-400: 250 162 51;   /* Chaud vif */
+--color-primary-500: 210 122 2;    /* Orange principal (#d27a02) */
+--color-primary-600: 186 108 2;    /* Foncé léger */
+--color-primary-700: 153 87 1;     /* Plus sombre */
+--color-primary-800: 122 69 1;     /* Presque brun orangé */
+--color-primary-900: 96 54 0;      /* Très foncé */
+
+ /* === COULEUR SECONDAIRE - ROSE POUDRÉ === */
+  --color-secondary-50: 250 247 245;   /* Très clair rose */
+  --color-secondary-100: 245 240 238;  /* Clair rose */
+  --color-secondary-200: 238 230 226;  /* Rose léger */
+  --color-secondary-300: 232 220 215;  /* Rose */
+  --color-secondary-400: 226 210 200;  /* Rose moyen */
+  --color-secondary-500: 232 176 178;  /* Rose principal */
+  --color-secondary-600: 215 155 160;  /* Rose foncé */
+  --color-secondary-700: 190 130 135;  /* Rose très foncé */
+  --color-secondary-800: 165 105 110;  /* Rose sombre */
+  --color-secondary-900: 135 80 85;    /* Rose très sombre */
+
+
+
+
+
+
   /* === COULEUR PRINCIPALE - COGNAC PROFOND === */
   --color-primary-50: 248 243 238;   /* Très clair cognac */
   --color-primary-100: 241 230 218;  /* Clair cognac */
