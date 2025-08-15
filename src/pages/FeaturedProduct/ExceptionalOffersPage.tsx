@@ -223,7 +223,7 @@ const CountdownTimer = memo(({ endTime, size = "normal" }) => {
 
   if (isExpired) {
     return (
-      <span className="text-xs text-red-500 font-medium">Offre expirée</span>
+      <span className="text-xs text-amber-500 font-medium">Offre expirée</span>
     );
   }
 
@@ -231,8 +231,8 @@ const CountdownTimer = memo(({ endTime, size = "normal" }) => {
 
   return (
     <div className={`flex items-center gap-1 ${isSmall ? 'text-xs' : 'text-sm'}`}>
-      <Clock className={`text-red-500 ${isSmall ? 'w-3 h-3' : 'w-4 h-4'}`} />
-      <span className="text-red-600 font-bold">
+      <Clock className={`text-amber-500 ${isSmall ? 'w-3 h-3' : 'w-4 h-4'}`} />
+      <span className="text-amber-600 font-bold">
         {String(timeLeft.hours).padStart(2, '0')}:
         {String(timeLeft.minutes).padStart(2, '0')}:
         {String(timeLeft.seconds).padStart(2, '0')}
@@ -444,7 +444,7 @@ const ExceptionalOffersPage = memo(() => {
 
           {/* Prix */}
           <div className="flex items-center gap-2 mb-2">
-            <span className="font-bold text-red-600 text-lg">{product.price}€</span>
+            <span className="font-bold text-gray-900 text-lg">{product.price}€</span>
             <span className="text-sm text-gray-400 line-through">
               {product.originalPrice}€
             </span>
@@ -475,7 +475,7 @@ const ExceptionalOffersPage = memo(() => {
           {/* Actions */}
           <div className="flex gap-2">
             <motion.button
-              className="flex-1 px-3 py-2 bg-red-500 text-white rounded-xl font-medium text-sm hover:bg-red-600 transition-all duration-200 flex items-center justify-center gap-1"
+              className="flex-1 px-3 py-2 bg-gray-900 text-white rounded-xl font-medium text-sm hover:bg-gray-800 transition-all duration-200 flex items-center justify-center gap-1"
               onClick={() => addToCart(product)}
               whileTap={{ scale: 0.98 }}
             >
@@ -483,7 +483,7 @@ const ExceptionalOffersPage = memo(() => {
               Ajouter
             </motion.button>
             <motion.button
-              className="p-2 border border-gray-200 rounded-xl hover:border-red-500 transition-colors"
+              className="p-2 border border-gray-200 rounded-xl hover:border-gray-900 transition-colors"
               whileTap={{ scale: 0.9 }}
             >
               <Eye className="w-4 h-4 text-gray-600" />
@@ -496,9 +496,33 @@ const ExceptionalOffersPage = memo(() => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header avec animation d'arrière-plan */}
-      <div className="bg-gradient-to-r from-red-500 via-orange-500 to-amber-500 relative overflow-hidden">
+      {/* Header avec gradient et animations */}
+      <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-amber-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+        
+        {/* Motifs décoratifs animés */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-amber-400 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                opacity: [0, 1, 0],
+                scale: [1, 2, 1],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-6">
             <div className="flex items-center gap-4">
@@ -515,13 +539,13 @@ const ExceptionalOffersPage = memo(() => {
                   animate={{ opacity: 1, x: 0 }}
                 >
                   <div className="relative">
-                    <Sparkles className="w-7 h-7 text-amber-300" />
+                    <Sparkles className="w-7 h-7 text-amber-400" />
                     <motion.div
                       className="absolute inset-0"
                       animate={{ rotate: 360 }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                      transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
                     >
-                      <Sparkles className="w-7 h-7 text-white opacity-50" />
+                      <Sparkles className="w-7 h-7 text-white opacity-30" />
                     </motion.div>
                   </div>
                   Offres Exceptionnelles
@@ -599,26 +623,26 @@ const ExceptionalOffersPage = memo(() => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="text-center">
             <motion.div
-              className="inline-flex items-center gap-4 px-6 py-3 rounded-full bg-red-50 border border-red-200"
+              className="inline-flex items-center gap-4 px-6 py-3 rounded-full bg-amber-50 border border-amber-200"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3 }}
             >
-              <Bell className="text-red-500 w-5 h-5" />
-              <span className="text-red-600 font-medium">Offres valables jusqu'à épuisement des stocks</span>
+              <Bell className="text-amber-600 w-5 h-5" />
+              <span className="text-amber-700 font-medium">Offres valables jusqu'à épuisement des stocks</span>
               <div className="flex gap-4 items-center">
                 <div className="text-center">
-                  <div className="text-xl font-bold text-red-600">23</div>
+                  <div className="text-xl font-bold text-amber-600">23</div>
                   <div className="text-xs text-gray-600">H</div>
                 </div>
-                <span className="text-red-500 text-xl">:</span>
+                <span className="text-amber-500 text-xl">:</span>
                 <div className="text-center">
-                  <div className="text-xl font-bold text-red-600">47</div>
+                  <div className="text-xl font-bold text-amber-600">47</div>
                   <div className="text-xs text-gray-600">M</div>
                 </div>
-                <span className="text-red-500 text-xl">:</span>
+                <span className="text-amber-500 text-xl">:</span>
                 <div className="text-center">
-                  <div className="text-xl font-bold text-red-600">12</div>
+                  <div className="text-xl font-bold text-amber-600">12</div>
                   <div className="text-xs text-gray-600">S</div>
                 </div>
               </div>
@@ -644,7 +668,7 @@ const ExceptionalOffersPage = memo(() => {
                   <input
                     type="text"
                     placeholder="Rechercher dans les offres..."
-                    className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
@@ -665,7 +689,7 @@ const ExceptionalOffersPage = memo(() => {
                       key={category}
                       className={`px-4 py-2 rounded-xl font-medium text-sm whitespace-nowrap transition-all duration-200 ${
                         selectedCategory === category
-                          ? 'bg-red-500 text-white'
+                          ? 'bg-gray-900 text-white'
                           : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                       }`}
                       onClick={() => setSelectedCategory(category)}
@@ -678,7 +702,7 @@ const ExceptionalOffersPage = memo(() => {
 
                 {/* Filtres par type d'offre */}
                 <select
-                  className="px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  className="px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                   value={selectedFilter}
                   onChange={(e) => setSelectedFilter(e.target.value)}
                 >
@@ -691,7 +715,7 @@ const ExceptionalOffersPage = memo(() => {
 
                 {/* Tri */}
                 <select
-                  className="px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  className="px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
                 >
@@ -713,7 +737,7 @@ const ExceptionalOffersPage = memo(() => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
               <div className="text-sm text-gray-600">
-                <span className="font-semibold text-red-600">{filteredOffers.length}</span> offre{filteredOffers.length > 1 ? 's' : ''} exceptionnelle{filteredOffers.length > 1 ? 's' : ''}
+                <span className="font-semibold text-gray-900">{filteredOffers.length}</span> offre{filteredOffers.length > 1 ? 's' : ''} exceptionnelle{filteredOffers.length > 1 ? 's' : ''}
               </div>
               <div className="text-sm text-gray-600">
                 <span className="font-semibold text-green-600">
@@ -761,7 +785,7 @@ const ExceptionalOffersPage = memo(() => {
               }
             </p>
             <motion.button
-              className="px-6 py-3 bg-red-500 text-white rounded-xl font-medium hover:bg-red-600 transition-colors"
+              className="px-6 py-3 bg-gray-900 text-white rounded-xl font-medium hover:bg-gray-800 transition-colors"
               whileTap={{ scale: 0.98 }}
             >
               Découvrir nos produits
@@ -806,7 +830,7 @@ const ExceptionalOffersPage = memo(() => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
-                  <Flame className="w-6 h-6 text-red-500" />
+                  <Flame className="w-6 h-6 text-amber-500" />
                   Offres Flash - Dernières Heures
                 </motion.h2>
                 <motion.p 
@@ -826,7 +850,7 @@ const ExceptionalOffersPage = memo(() => {
                   .map((product, index) => (
                     <motion.div
                       key={`flash-${product.id}`}
-                      className="relative bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl border-2 border-red-200 p-4"
+                      className="relative bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border-2 border-amber-200 p-4"
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: index * 0.1 }}
@@ -834,7 +858,7 @@ const ExceptionalOffersPage = memo(() => {
                     >
                       <div className="absolute top-2 right-2">
                         <motion.div
-                          className="w-3 h-3 bg-red-500 rounded-full"
+                          className="w-3 h-3 bg-amber-500 rounded-full"
                           animate={{ scale: [1, 1.2, 1] }}
                           transition={{ duration: 1, repeat: Infinity }}
                         />
@@ -856,12 +880,12 @@ const ExceptionalOffersPage = memo(() => {
                       
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-2">
-                          <span className="font-bold text-red-600">{product.price}€</span>
+                          <span className="font-bold text-amber-600">{product.price}€</span>
                           <span className="text-xs text-gray-400 line-through">
                             {product.originalPrice}€
                           </span>
                         </div>
-                        <span className="text-xs bg-red-500 text-white px-2 py-1 rounded-full font-bold">
+                        <span className="text-xs bg-amber-500 text-white px-2 py-1 rounded-full font-bold">
                           -{product.discount}%
                         </span>
                       </div>
@@ -869,7 +893,7 @@ const ExceptionalOffersPage = memo(() => {
                       <CountdownTimer endTime={product.offerEndTime} size="small" />
                       
                       <motion.button
-                        className="w-full mt-3 px-3 py-2 bg-red-500 text-white rounded-xl font-medium text-sm hover:bg-red-600 transition-colors"
+                        className="w-full mt-3 px-3 py-2 bg-amber-500 text-white rounded-xl font-medium text-sm hover:bg-amber-600 transition-colors"
                         whileTap={{ scale: 0.98 }}
                       >
                         Acheter maintenant
@@ -880,7 +904,7 @@ const ExceptionalOffersPage = memo(() => {
 
               {/* Newsletter offres */}
               <motion.div
-                className="bg-gradient-to-r from-amber-500 to-red-500 rounded-2xl p-6 text-center text-white"
+                className="bg-gradient-to-r from-gray-900 to-amber-900 rounded-2xl p-6 text-center text-white"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
@@ -899,7 +923,7 @@ const ExceptionalOffersPage = memo(() => {
                     className="flex-1 px-4 py-2 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
                   />
                   <motion.button
-                    className="px-6 py-2 bg-white text-red-500 rounded-xl font-medium hover:bg-gray-100 transition-colors"
+                    className="px-6 py-2 bg-white text-gray-900 rounded-xl font-medium hover:bg-gray-100 transition-colors"
                     whileTap={{ scale: 0.98 }}
                   >
                     S'abonner
@@ -947,7 +971,7 @@ const ExceptionalOffersPage = memo(() => {
             exit={{ opacity: 0, scale: 0 }}
           >
             <motion.button
-              className="relative p-4 bg-red-500 text-white rounded-full shadow-lg hover:bg-red-600 transition-colors"
+              className="relative p-4 bg-gray-900 text-white rounded-full shadow-lg hover:bg-gray-800 transition-colors"
               whileTap={{ scale: 0.9 }}
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
