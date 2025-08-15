@@ -39,19 +39,20 @@ const Footer = memo(() => {
   ]
 
   const services = [
-    'Programme Fidélité',
-    'Carte Cadeau',
-    'Guide des Tailles',
-    'Retours & Échanges',
-    'Service Client'
+    
+    'Programme fidélité',
+    'Service personnalisé',
+    'Carte cadeau',
+    'paiement securisé',
+    'ivraison rapide',
+    'Service client'
   ]
-
+  
   const informations = [
-    'À Propos',
+    'Notre identité',
     'Notre Histoire',
-    'Nos Artisans',
-    'CGV',
-    'Politique de Confidentialité'
+    'Nos partners',
+    'Notre Politique de Confidentialité'
   ]
 
   return (
@@ -82,7 +83,7 @@ const Footer = memo(() => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Votre adresse email"
+                  placeholder="numero de telephone ou adresse email "
                   className="flex-1 px-6 py-4 bg-white/80 backdrop-blur-sm rounded-l-2xl border border-gray-200/50 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-transparent transition-all duration-200"
                   whileFocus={{ scale: 1.02 }}
                   required

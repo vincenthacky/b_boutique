@@ -21,7 +21,7 @@ import {
   ChevronRight,
   Eye,
   Shield,
-  Zap,
+  Tag,
   TrendingUp,
   Clock,
   MapPin,
@@ -66,13 +66,13 @@ const heroData = {
   preTitle: "Artisanat Premium Africain",
   ctaButtons: [
     {
-      text: "Explorer nos créations",
+      text: "Découvrir nos marques",
       icon: ShoppingBag,
       variant: "primary",
       link: "/shop"
     },
     {
-      text: "Voir notre histoire",
+      text: "Découvrir notre identité",
       icon: Play,
       variant: "secondary",
       link: "/about"
@@ -80,6 +80,22 @@ const heroData = {
   ],
   backgroundImage: bannerImage
 }
+
+
+const ctaButtonsCategoriePhares= [
+    {
+      text: "Offres exceptionnelles",
+      icon: Tag,
+      variant: "primary",
+      link: "/offers"
+    },
+    {
+      text: "Nouvelles créations",
+      icon: Sparkles,
+      variant: "primary",
+      link: "/new-products"
+    }
+  ]
 
 // Categories Data
  const categoriesData = [
@@ -533,13 +549,21 @@ const servicesData = [
   {
     id: 2,
     icon: Gift,
+    title: 'Services Personnalisés',
+    description: 'Offrez le choix avec nos cartes cadeaux personnalisables',
+    color: 'from-fuchsia-600 to-pink-500',
+    link: '/services/carte-cadeau'
+  },
+    {
+    id: 3,
+    icon: Gift,
     title: 'Carte cadeau Be',
     description: 'Offrez le choix avec nos cartes cadeaux personnalisables',
     color: 'from-fuchsia-600 to-pink-500',
     link: '/services/carte-cadeau'
   },
   {
-    id: 3,
+    id: 4,
     icon: CreditCard,
     title: 'Moyens de paiement',
     description: 'Paiement sécurisé par carte, mobile money ou virement',
@@ -547,7 +571,7 @@ const servicesData = [
     link: '/services/paiement'
   },
   {
-    id: 4,
+    id: 5,
     icon: Truck,
     title: 'Mode de livraison',
     description: 'Livraison rapide dans toute la Côte d\'Ivoire et l\'Afrique de l\'Ouest',
@@ -555,7 +579,7 @@ const servicesData = [
     link: '/services/livraison'
   },
   {
-    id: 5,
+    id: 6,
     icon: Headphones,
     title: 'Service client',
     description: 'Une équipe dédiée pour vous accompagner 7j/7',
@@ -889,6 +913,15 @@ const ScrollableProductsSection = ({ products, containerClass = 'products-contai
   );
 };
 
+  const darkOverlays = {
+    mainBackground: 'from-gray-900 via-gray-800 to-black',
+    imageOpacity: 0.2, // Légèrement augmentée pour mobile
+    blackOverlay: 0.5, // Augmentée pour meilleur contraste mobile
+    gradientOverlay: 'from-gray-900/70 via-transparent to-gray-900/40',
+    buttonBackdrop: 'bg-white/20',
+    scrollIndicator: 'bg-black/20'
+  }
+
 // Main Homepage Component
 const HomePage = memo(() => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -972,6 +1005,39 @@ const HomePage = memo(() => {
                 </motion.div>
               </motion.div>
             ))}
+          </motion.div>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-10 md:mb-12 px-4"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+          >
+            {ctaButtonsCategoriePhares.map((button, index) => {
+              const Icon = button.icon
+              return (
+                <Link to={button.link} key={index}> 
+
+
+                <motion.button
+                  key={index}
+                  className={`group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 ${
+                    button.variant === 'primary' 
+                      ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-2xl shadow-amber-500/25' 
+                      : `backdrop-blur-md text-white border-2 border-amber-400/50 ${darkOverlays.buttonBackdrop}`
+                  } rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg hover:shadow-xl`}
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span>{button.text}</span>
+                  {button.variant === 'primary' && (
+                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
+                  )}
+                </motion.button>
+
+                 </Link> // <-- Close
+              )
+            })}
           </motion.div>
         </div>
       </section>

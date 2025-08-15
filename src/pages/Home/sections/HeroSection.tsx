@@ -177,10 +177,10 @@ export const HeroSection = ({
             transition={{ delay: 1.2, duration: 0.6 }}
           >
             {[
-              { id: 1, icon: Shield, text: 'Paiement sécurisé', highlight: 'Sécurisé', shortText: 'Sécurisé' },
+              { id: 1, icon: Shield, text: 'Paiement sécurisé', highlight: 'sécurisé', shortText: 'Sécurisé' },
               { id: 2, icon: Truck, text: 'Livraison 48-72h', highlight: '48-72h', shortText: '48-72h' },
-              { id: 3, icon: Heart, text: 'Satisfait 30j', highlight: '30j', shortText: '30 jours' },
-              { id: 4, icon: Users, text: '10,000+ clients', highlight: '10,000+', shortText: '10k+' }
+              //{ id: 3, icon: Heart, text: 'Satisfait 30j', highlight: '30j', shortText: '30 jours' },
+              { id: 3, icon: Users, text: '10+ partenaires', highlight: '10+', shortText: '10k+' }
             ].map((indicator, index) => {
               const Icon = indicator.icon
               return (

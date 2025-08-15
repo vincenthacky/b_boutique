@@ -207,7 +207,7 @@ const Header = memo(() => {
                     : 'text-gray-700 hover:text-amber-600 hover:bg-amber-50/30'
                 }`}
               >
-                Services
+                Nos services
                 {isActiveRoute('/services') && (
                   <motion.div
                     className="absolute -bottom-3 left-1/2 w-2 h-2 bg-amber-600 rounded-full transform -translate-x-1/2"

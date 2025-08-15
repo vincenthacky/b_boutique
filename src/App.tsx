@@ -16,6 +16,8 @@ const FavoritesPage = lazy(() => import('./pages/favorites/favoritesPage'));
 const CartPage = lazy(() => import('./pages/Cart/CartPage'));
 const ServicesPage = lazy(() => import('./pages/Services/ServicesPage'));
 const AccountPage = lazy(() => import('./pages/Account/account'));
+const ExceptionalOffersPage = lazy(() => import('./pages/FeaturedProduct/ExceptionalOffersPage'));
+const NewProductsPage= lazy(() => import('./pages/NewProduct/NewProductsPage'));
 
 //const ProductsPage = lazy(() => import('./pages/Products/ProductsPage'))
 //const ProductDetailPage = lazy(() => import('./pages/ProductDetail/ProductDetailPage'))
@@ -38,7 +40,9 @@ const App = memo(() => {
                <Route path="/favorites" element={<FavoritesPage />} /> {/* Page des favoris */}
                <Route path="/cart" element={<CartPage />} /> {/* Page du panier */}
                 <Route path="/services" element={<ServicesPage />} /> {/* Page des services */}
-              <Route path="/account" element={<AccountPage />} /> {/* Page du compte */}
+               <Route path="/account" element={<AccountPage />} /> {/* Page du compte */}
+              <Route path="/offers" element={<ExceptionalOffersPage />} /> {/* Page des offres exceptionnelles */}
+              <Route path="/new-products" element={<NewProductsPage />} /> {/* Page des nouveaux produits */}
 
                
 
