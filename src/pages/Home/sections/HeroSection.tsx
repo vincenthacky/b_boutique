@@ -170,44 +170,45 @@ export const HeroSection = ({
           </motion.div>
 
           {/* Indicateurs de confiance optimisés pour mobile */}
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto px-2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-          >
-            {[
-              { id: 1, icon: Shield, text: 'Paiement sécurisé', highlight: 'sécurisé', shortText: 'Sécurisé' },
-              { id: 2, icon: Truck, text: 'Livraison 48-72h', highlight: '48-72h', shortText: '48-72h' },
-              //{ id: 3, icon: Heart, text: 'Satisfait 30j', highlight: '30j', shortText: '30 jours' },
-              { id: 3, icon: Users, text: '10+ partenaires', highlight: '10+', shortText: '10k+' }
-            ].map((indicator, index) => {
-              const Icon = indicator.icon
-              return (
-                <motion.div
-                  key={indicator.id}
-                  className="flex flex-col items-center gap-1 sm:gap-2 text-gray-200"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.3 + index * 0.1 }}
-                >
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-amber-400" />
-                  <span className="text-xs sm:text-xs text-center leading-tight">
-                    <span className="font-bold text-amber-400 block sm:inline">
-                      {window.innerWidth < 640 ? indicator.shortText : indicator.highlight}
-                    </span>
-                    <span className="hidden sm:inline">
-                      <br className="sm:hidden" />
-                      {indicator.text.replace(indicator.highlight, '')}
-                    </span>
-                    <span className="sm:hidden block text-gray-400">
-                      {indicator.text.replace(indicator.highlight, '').trim()}
-                    </span>
-                  </span>
-                </motion.div>
-              )
-            })}
-          </motion.div>
+          {/* Indicateurs de confiance avec grille flexible */}
+<motion.div
+  className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 max-w-xs sm:max-w-2xl md:max-w-4xl mx-auto px-2"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 1.2, duration: 0.6 }}
+>
+  {[
+    { id: 1, icon: Shield, text: 'Paiement sécurisé', highlight: 'sécurisé', shortText: 'Sécurisé' },
+    { id: 2, icon: Truck, text: 'Livraison 48-72h', highlight: '48-72h', shortText: '48-72h' },
+    //{ id: 3, icon: Heart, text: 'Satisfait 30j', highlight: '30j', shortText: '30 jours' },
+    { id: 3, icon: Users, text: '10+ partenaires', highlight: '10+', shortText: '10k+' }
+  ].filter(Boolean).map((indicator, index) => {
+    const Icon = indicator.icon
+    return (
+      <motion.div
+        key={indicator.id}
+        className="flex flex-col items-center gap-1 sm:gap-2 text-gray-200 min-w-[100px] sm:min-w-[120px] px-2 py-1 flex-1 basis-[calc(50%-12px)] sm:basis-[calc(25%-16px)]"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.3 + index * 0.1 }}
+      >
+        <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-amber-400" />
+        <span className="text-xs sm:text-xs text-center leading-tight">
+          <span className="font-bold text-amber-400 block sm:inline">
+            {window.innerWidth < 640 ? indicator.shortText : indicator.highlight}
+          </span>
+          <span className="hidden sm:inline">
+            <br className="sm:hidden" />
+            {indicator.text.replace(indicator.highlight, '')}
+          </span>
+          <span className="sm:hidden block text-gray-400">
+            {indicator.text.replace(indicator.highlight, '').trim()}
+          </span>
+        </span>
+      </motion.div>
+    )
+  })}
+</motion.div>
         </motion.div>
       </div>
 
