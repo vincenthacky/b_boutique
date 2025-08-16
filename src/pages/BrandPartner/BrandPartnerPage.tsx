@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 
 // Import des images - remplacez par vos vrais chemins
-import bannerImage from '@/assets/femme-rastafarienne.jpg';
+//import bannerImage from '@/assets/femme-rastafarienne.jpg';
 import beLogo from '@/assets/Logo_orange.png';
 import brandEndImage from '@/assets/Logo_orange.png';
 import collectionsSignatureImage from '@/assets/collections-signature-be.jpg';
@@ -38,6 +38,14 @@ import amandeChantilly from '@/assets/etiquettes-chantilly-amande.png';
 import carotteChantilly from '@/assets/etiquettes-chantilly-carotte.png';
 import noisetteChantilly from '@/assets/etiquettes-chantilly-noisette.png';
 import calendulaChantilly from '@/assets/etiquettes-chantilly-calendula.png';
+
+
+
+
+
+
+
+
 
 // Données des collections d'huiles
 const huilesData = [

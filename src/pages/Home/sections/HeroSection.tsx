@@ -31,43 +31,40 @@ export const HeroSection = ({
   scrollY?: any
 }) => {
 
-  const heroOpacity = scrollY?.current ? useTransform(scrollY, [1, 0.3], [1, 0.3]) : { current: 1 }
+  // L'effet de scale (zoom) est conservé, mais l'effet d'opacité est supprimé.
   const heroScale = scrollY?.current ? useTransform(scrollY, [1, 1.1], [1, 1.1]) : { current: 1 }
 
-  // Configuration optimisée pour mobile avec des opacités ajustées
-  const darkOverlays = {
-    mainBackground: 'from-gray-900 via-gray-800 to-black',
-    imageOpacity: 0.2, // Légèrement augmentée pour mobile
-    blackOverlay: 0.5, // Augmentée pour meilleur contraste mobile
-    gradientOverlay: 'from-gray-900/70 via-transparent to-gray-900/40',
+  // Configuration simplifiée pour les styles restants
+  const overlays = {
     buttonBackdrop: 'bg-white/20',
     scrollIndicator: 'bg-black/20'
   }
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Arrière-plan principal sombre */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${darkOverlays.mainBackground}`}></div>
+      {/* L'arrière-plan principal sombre a été supprimé. */}
       
-      {/* Image de fond optimisée pour mobile */}
+      {/* Image de fond avec une teinte noire très légère */}
       <motion.div 
         className="absolute inset-0 w-full h-full"
         style={{ 
-          scale: heroScale, 
-          opacity: heroOpacity * darkOverlays.imageOpacity
+          scale: heroScale,
+          // L'opacité qui changeait au scroll a été enlevée.
         }}
       >
         <img
           src={heroData.backgroundImage}
           alt="Be Boutique - L'Afrique se révèle"
-          className="w-full h-full object-cover object-center mix-blend-overlay"
+          // la classe "mix-blend-overlay" a été supprimée pour ne pas assombrir l'image.
+          className="w-full h-full object-cover object-center"
           loading="eager"
         />
+        {/* Ceci est maintenant la seule couche qui teinte l'image, avec une opacité très faible. */}
         <div 
           className="absolute inset-0"
-          style={{ backgroundColor: `rgba(0, 0, 0, ${darkOverlays.blackOverlay})` }}
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.15)' }} // Teinte noire très légère (15%)
         ></div>
-        <div className={`absolute inset-0 bg-gradient-to-t ${darkOverlays.gradientOverlay}`}></div>
+        {/* Le dégradé sombre supplémentaire sur l'image a été supprimé. */}
       </motion.div>
 
       {/* Effets de lumière optimisés pour mobile */}
@@ -143,72 +140,86 @@ export const HeroSection = ({
           >
             {heroData.ctaButtons.map((button, index) => {
               const Icon = button.icon
-              return (
-                <Link to={button.link} key={index}> 
+              const isAnchor = button.link.startsWith('#')
 
-
-                <motion.button
-                  key={index}
-                  className={`group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 ${
-                    button.variant === 'primary' 
-                      ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-2xl shadow-amber-500/25' 
-                      : `backdrop-blur-md text-white border-2 border-amber-400/50 ${darkOverlays.buttonBackdrop}`
-                  } rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg hover:shadow-xl`}
-                  whileHover={{ scale: 1.05, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
-                  <span>{button.text}</span>
-                  {button.variant === 'primary' && (
-                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
-                  )}
-                </motion.button>
-
-                 </Link> // <-- Close
+              return isAnchor ? (
+                <a href={button.link} key={index}>
+                  <motion.button
+                    className={`group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 ${
+                      button.variant === 'primary' 
+                        ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-2xl shadow-amber-500/25' 
+                        : `backdrop-blur-md text-white border-2 border-amber-400/50 ${overlays.buttonBackdrop}`
+                    } rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg hover:shadow-xl`}
+                    whileHover={{ scale: 1.05, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span>{button.text}</span>
+                    {button.variant === 'primary' && (
+                      <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
+                    )}
+                  </motion.button>
+                </a>
+              ) : (
+                <Link to={button.link} key={index}>
+                  <motion.button
+                    className={`group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 ${
+                      button.variant === 'primary' 
+                        ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-2xl shadow-amber-500/25' 
+                        : `backdrop-blur-md text-white border-2 border-amber-400/50 ${overlays.buttonBackdrop}`
+                    } rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg hover:shadow-xl`}
+                    whileHover={{ scale: 1.05, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span>{button.text}</span>
+                    {button.variant === 'primary' && (
+                      <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
+                    )}
+                  </motion.button>
+                </Link>
               )
             })}
           </motion.div>
 
-          {/* Indicateurs de confiance optimisés pour mobile */}
           {/* Indicateurs de confiance avec grille flexible */}
-<motion.div
-  className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 max-w-xs sm:max-w-2xl md:max-w-4xl mx-auto px-2"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ delay: 1.2, duration: 0.6 }}
->
-  {[
-    { id: 1, icon: Shield, text: 'Paiement sécurisé', highlight: 'sécurisé', shortText: 'Sécurisé' },
-    { id: 2, icon: Truck, text: 'Livraison 48-72h/Livraison express', highlight: '48-72h', shortText: '48-72h' },
-    //{ id: 3, icon: Heart, text: 'Satisfait 30j', highlight: '30j', shortText: '30 jours' },
-    { id: 3, icon: Users, text: '10+ partenaires', highlight: '10+', shortText: '10k+' }
-  ].filter(Boolean).map((indicator, index) => {
-    const Icon = indicator.icon
-    return (
-      <motion.div
-        key={indicator.id}
-        className="flex flex-col items-center gap-1 sm:gap-2 text-gray-200 min-w-[100px] sm:min-w-[120px] px-2 py-1 flex-1 basis-[calc(50%-12px)] sm:basis-[calc(25%-16px)]"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.3 + index * 0.1 }}
-      >
-        <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-amber-400" />
-        <span className="text-xs sm:text-xs text-center leading-tight">
-          <span className="font-bold text-amber-400 block sm:inline">
-            {window.innerWidth < 640 ? indicator.shortText : indicator.highlight}
-          </span>
-          <span className="hidden sm:inline">
-            <br className="sm:hidden" />
-            {indicator.text.replace(indicator.highlight, '')}
-          </span>
-          <span className="sm:hidden block text-gray-400">
-            {indicator.text.replace(indicator.highlight, '').trim()}
-          </span>
-        </span>
-      </motion.div>
-    )
-  })}
-</motion.div>
+          <motion.div
+            className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 max-w-xs sm:max-w-2xl md:max-w-4xl mx-auto px-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
+          >
+            {[
+              { id: 1, icon: Shield, text: 'Paiement sécurisé', highlight: 'sécurisé', shortText: 'Sécurisé' },
+              { id: 2, icon: Truck, text: 'Livraison 48-72h/Livraison express', highlight: '48-72h', shortText: '48-72h' },
+              { id: 3, icon: Users, text: '10+ partenaires', highlight: '10+', shortText: '10k+' }
+            ].filter(Boolean).map((indicator, index) => {
+              const Icon = indicator.icon
+              return (
+                <motion.div
+                  key={indicator.id}
+                  className="flex flex-col items-center gap-1 sm:gap-2 text-gray-200 min-w-[100px] sm:min-w-[120px] px-2 py-1 flex-1 basis-[calc(50%-12px)] sm:basis-[calc(25%-16px)]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.3 + index * 0.1 }}
+                >
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-amber-400" />
+                  <span className="text-xs sm:text-xs text-center leading-tight">
+                    <span className="font-bold text-amber-400 block sm:inline">
+                      {window.innerWidth < 640 ? indicator.shortText : indicator.highlight}
+                    </span>
+                    <span className="hidden sm:inline">
+                      <br className="sm:hidden" />
+                      {indicator.text.replace(indicator.highlight, '')}
+                    </span>
+                    <span className="sm:hidden block text-gray-400">
+                      {indicator.text.replace(indicator.highlight, '').trim()}
+                    </span>
+                  </span>
+                </motion.div>
+              )
+            })}
+          </motion.div>
         </motion.div>
       </div>
 
@@ -218,7 +229,7 @@ export const HeroSection = ({
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
-        <div className={`w-6 h-10 sm:w-7 sm:h-12 border-2 border-amber-400/50 rounded-full flex justify-center backdrop-blur-sm ${darkOverlays.scrollIndicator}`}>
+        <div className={`w-6 h-10 sm:w-7 sm:h-12 border-2 border-amber-400/50 rounded-full flex justify-center backdrop-blur-sm ${overlays.scrollIndicator}`}>
           <motion.div
             className="w-1 sm:w-1.5 h-2 sm:h-3 bg-amber-400 rounded-full mt-1.5 sm:mt-2"
             animate={{ y: [0, 10, 0] }}
