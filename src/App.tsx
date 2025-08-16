@@ -18,6 +18,7 @@ const ServicesPage = lazy(() => import('./pages/Services/ServicesPage'));
 const AccountPage = lazy(() => import('./pages/Account/account'));
 const ExceptionalOffersPage = lazy(() => import('./pages/FeaturedProduct/ExceptionalOffersPage'));
 const NewProductsPage= lazy(() => import('./pages/NewProduct/NewProductsPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicy/PrivacyPolicyPage'));
 
 //const ProductsPage = lazy(() => import('./pages/Products/ProductsPage'))
 //const ProductDetailPage = lazy(() => import('./pages/ProductDetail/ProductDetailPage'))
@@ -43,6 +44,9 @@ const App = memo(() => {
                <Route path="/account" element={<AccountPage />} /> {/* Page du compte */}
               <Route path="/offers" element={<ExceptionalOffersPage />} /> {/* Page des offres exceptionnelles */}
               <Route path="/new-products" element={<NewProductsPage />} /> {/* Page des nouveaux produits */}
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} /> {/* Page de la politique de confidentialité */}
+              
+              {/* Routes pour les collections */}
 
                
 

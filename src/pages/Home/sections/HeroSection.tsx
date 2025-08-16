@@ -179,7 +179,7 @@ export const HeroSection = ({
 >
   {[
     { id: 1, icon: Shield, text: 'Paiement sécurisé', highlight: 'sécurisé', shortText: 'Sécurisé' },
-    { id: 2, icon: Truck, text: 'Livraison 48-72h', highlight: '48-72h', shortText: '48-72h' },
+    { id: 2, icon: Truck, text: 'Livraison 48-72h/Livraison express', highlight: '48-72h', shortText: '48-72h' },
     //{ id: 3, icon: Heart, text: 'Satisfait 30j', highlight: '30j', shortText: '30 jours' },
     { id: 3, icon: Users, text: '10+ partenaires', highlight: '10+', shortText: '10k+' }
   ].filter(Boolean).map((indicator, index) => {

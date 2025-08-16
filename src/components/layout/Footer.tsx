@@ -1,6 +1,7 @@
 // components/layout/Footer.tsx
 import { memo, useState } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from "react-router-dom";
 import { 
   Mail,
   MapPin,
@@ -48,12 +49,12 @@ const Footer = memo(() => {
     'Service client'
   ]
   
-  const informations = [
-    'Notre identité',
-    'Notre Histoire',
-    'Nos partners',
-    'Notre Politique de Confidentialité'
-  ]
+ const informations = [
+  { label: 'Notre identité', to: '/about' },
+  { label: 'Nos marques partenaires', to: '/marques' },
+  { label: 'Guide de taille', to: '/guide-taille' },
+  { label: 'Notre Politique de Confidentialité', to: '/privacy-policy' },
+];
 
   return (
     <footer className="relative mt-20">
@@ -182,28 +183,30 @@ const Footer = memo(() => {
             </motion.div>
 
             {/* Infos */}
-            <motion.div
-              className="space-y-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <h3 className="text-lg font-semibold text-gray-900">Informations</h3>
-              <ul className="space-y-3">
-                {informations.map((info) => (
-                  <li key={info}>
-                    <motion.a
-                      href="#"
-                      className="text-gray-600 hover:text-amber-600 transition-colors duration-200 block"
-                      whileHover={{ x: 4 }}
-                    >
-                      {info}
-                    </motion.a>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+            {/* Infos */}
+<motion.div
+  className="space-y-6"
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, delay: 0.2 }}
+>
+  <h3 className="text-lg font-semibold text-gray-900">Informations</h3>
+  <ul className="space-y-3">
+    {informations.map((info) => (
+      <li key={info.label}>
+        <motion.div whileHover={{ x: 4 }}>
+          <Link
+            to={info.to}
+            className="text-gray-600 hover:text-amber-600 transition-colors duration-200 block"
+          >
+            {info.label}
+          </Link>
+        </motion.div>
+      </li>
+    ))}
+  </ul>
+</motion.div>
 
             {/* Contact */}
             <motion.div
